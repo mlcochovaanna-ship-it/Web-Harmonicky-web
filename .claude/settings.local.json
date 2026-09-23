@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open \"/Users/annamlcochova/Documents/WEBY/00_VC weby/Harmonicky web 4/Web Harmonicky web 4/index.html\")",
+      "WebFetch(domain:www.sliderrevolution.com)",
+      "WebFetch(domain:reallygooddesigns.com)",
+      "WebFetch(domain:freefrontend.com)",
+      "WebFetch(domain:www.pietschsoft.com)",
+      "WebFetch(domain:moderncss.dev)",
+      "WebFetch(domain:ishadeed.com)",
+      "WebFetch(domain:99designs.com)",
+      "WebFetch(domain:www.lapa.ninja)"
+    ]
+  }
+}

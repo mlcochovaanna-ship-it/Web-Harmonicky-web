@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO -->
+  <title>Weby pro maséry, kosmetičky a kadeřnice | Harmonický web</title>
+  <meta name="description"
+    content="Vytvořím vám web, který přivádí nové klienty a odpovídá kvalitě vaší práce. Weby pro maséry, kosmetičky, kadeřnice, wellness a další služby péče o tělo.">
+  <link rel="canonical" href="https://harmonickyweb.cz/weby-pro-masery-a-peci-o-telo">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harmonickyweb.cz/weby-pro-masery-a-peci-o-telo">
+  <meta property="og:title" content="Weby pro maséry, kosmetičky a kadeřnice | Harmonický web">
+  <meta property="og:description" content="Vytvořím vám web, který přivádí nové klienty a odpovídá kvalitě vaší práce.">
+  <meta property="og:image" content="https://harmonickyweb.cz/Obrazky/harmonicky-web-0.jpg">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="Harmonický web">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Weby pro maséry, kosmetičky a kadeřnice | Harmonický web">
+  <meta name="twitter:description"
+    content="Vytvořím vám web, který přivádí nové klienty a odpovídá kvalitě vaší práce.">
+  <meta name="twitter:image" content="https://harmonickyweb.cz/Obrazky/harmonicky-web-0.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Obrazky/logo-male.png">
+
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- LP override: header není fixní, pozadí sekcí, portfolio glass efekt -->
+  <style>
+    .site-header { position: relative; background: var(--c-primary); }
+    .site-header .navbar { height: var(--nav-h); }
+    .lp-hero { padding-top: var(--s8) !important; min-height: calc(100svh - var(--nav-h)) !important; }
+    .lp-hero__body { height: calc(100svh - var(--nav-h) - var(--s8) * 2); }
+    /* Spolupráce + Ceník – bílé pozadí */
+    .lp-steps { background: var(--c-white); }
+    .lp-pricing { background: var(--c-white); }
+    /* Portfolio – béžové pozadí, glass karty */
+    .lp-portfolio { background: var(--c-primary); padding-block-end: var(--s10); }
+    .lp-portfolio .portfolio-info { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.65); }
+    .lp-portfolio .portfolio-info::before { background: linear-gradient(to right, var(--c-primary) 0%, rgba(240,237,232,0) 100%); }
+    .lp-portfolio .portfolio-card:nth-child(even) .portfolio-info::before { background: linear-gradient(to left, var(--c-primary) 0%, rgba(240,237,232,0) 100%); }
+    .lp-faq .accordion-item { background: rgba(1, 92, 99, 0.08); border: 1px solid rgba(1, 92, 99, 0.18); }
+    .lp-faq .accordion-trigger:hover { background: rgba(1, 92, 99, 0.12); }
+    .lp-faq .accordion-title { color: var(--c-accent-deep); }
+    .lp-faq .accordion-icon { color: var(--c-accent); }
+    .container { width: 75%; }
+    .reference { background-image: url('Obrazky/harmonicky-web-3.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding-block-end: var(--s10); }
+    .reference .refs-grid { margin-top: 0; }
+
+  </style>
+
+  <!-- Breadcrumb + Service Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Domů", "item": "https://harmonickyweb.cz/" },
+      { "@type": "ListItem", "position": 2, "name": "Weby pro maséry a péči o tělo", "item": "https://harmonickyweb.cz/weby-pro-masery-a-peci-o-telo" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Tvorba webu pro maséry, kosmetičky, kadeřnice a další služby péče o tělo",
+    "serviceType": "Tvorba webových stránek",
+    "url": "https://harmonickyweb.cz/weby-pro-masery-a-peci-o-telo",
+    "provider": { "@id": "https://harmonickyweb.cz/#business" },
+    "areaServed": { "@type": "Place", "name": "Olomouc a okolí" },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Maséři, kosmetičky, kadeřnice, barbeři, fyzioterapeuti a další profese péče o tělo"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CZK",
+      "price": "10000",
+      "url": "https://harmonickyweb.cz/weby-pro-masery-a-peci-o-telo"
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Kolik stojí web pro masérku nebo kosmetičku?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cena se odvíjí od rozsahu a potřeb vašeho podnikání. Konkrétní nabídku připravím vždy individuálně po úvodní konzultaci tak, aby odpovídala přesně tomu, co potřebujete. Weby tvořím od 10 000 Kč."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak dlouho trvá vytvoření webu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Od dodání podkladů z vaší strany mi práce zabere zpravidla 1 měsíc. Záleží na rozsahu webu. Termín si vždy domluvíme předem, abyste měli představu."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Musím si připravit texty sám/sama?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Na úvodní schůzce se domluvíme, v jakém rozsahu od vás budu potřebovat texty a podklady. Většina vyplyne už ze samotného úvodního rozhovoru. Já potom texty upravím a zasadím do webu tak, aby správně fungovaly a měly ten efekt, co potřebujeme."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co všechno web pro péči o tělo obsahuje?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Každý web je jiný a stavím ho přímo vám na míru. Vždy ale řešíme přehlednou prezentaci vašich služeb, kontakt, ceník pokud ho na webu chcete, vaši přidanou hodnotu a jasnou výzvu k akci. A samozřejmě to, aby web dobře fungoval na mobilu, tabletu i na počítači."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Budu moci web sám/sama upravovat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stavím weby s redakčním systémem i bez, tedy volba je na vás. Pokud si chcete základní úpravy dělat sami, můžu vás do systému zaškolit. Ráda vám však budu k ruce a upravím web podle vašich instrukcí kdykoliv si vzpomenete."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Děláte weby i pro začínající podnikatele?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ano, moc ráda. Začátek podnikání je ten nejlepší moment pro vyladění a návrh kvalitního webu. Budujete značku od základů a já vám pomůžu vystihnout vaši přidanou hodnotu a to, co potřebují vaši zákazníci slyšet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Můžete mi předělat nebo upravit stávající web?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Záleží na tom, jakým způsobem je váš web postaven. Ráda se na něj mrknu a řeknu vám, co je možné a co by se vyplatilo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Potřebuji doménu a hosting. Poradíte mi s tím?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ano, s výběrem domény i hostingu vám ráda poradím a celé nastavení zařídím za vás. Doménu i hosting vždy objednávám přímo na vás, aby tyto služby byly ve vašem vlastnictví a abyste se ke správě kdykoliv dostali sami."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Hlavní navigace">
+      <div class="nav-container">
+
+        <a href="/" class="nav-logo" aria-label="Harmonický web – domů">
+          <img src="Obrazky/logo-male.png" width="700" height="700" alt="Harmonický web – Anna Mlčochová">
+          <span class="nav-logo__text">Harmonický web</span>
+        </a>
+
+        <a href="#konzultace" class="btn nav-link nav-link--cta">Nezávazná konzultace</a>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         SEKCE 2 — HERO
+    ============================================================ -->
+    <section class="lp-hero" aria-labelledby="lp-hero-h">
+      <div class="container">
+        <div class="lp-hero__body">
+
+          <!-- Levé fotky -->
+          <div class="lp-hero__images lp-hero__images--left" aria-hidden="true">
+            <div class="lp-hero__img lp-hero__img--1">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-kadernice.png" width="1024" height="1024" alt="Kadeřnice" loading="eager">
+            </div>
+            <div class="lp-hero__img lp-hero__img--2">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-maser.png" width="1254" height="1254" alt="Masér" loading="lazy">
+            </div>
+            <div class="lp-hero__img lp-hero__img--3">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-trener.png" width="1254" height="1254" alt="Fitness trenér" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Text uprostřed -->
+          <div class="lp-hero__content">
+            <div class="lp-hero__main">
+              <p class="section-label">Vaše práce si zaslouží být vidět</p>
+              <h1 class="lp-hero__h1" id="lp-hero-h">Tvorba webu pro <strong>maséry, kosmetičky, barbery</strong>
+                a&nbsp;další služby péče o&nbsp;tělo</h1>
+              <p class="lp-hero__sub">Vím, že svou práci děláte srdcem, a&nbsp;cítí to i&nbsp;vaši klienti. Vytvořím vám
+                web, který odpovídá kvalitě vaší práce a&nbsp;přivádí klienty, kteří to ocení.</p>
+              <div class="lp-hero__ctas">
+                <a href="#konzultace" class="btn btn--primary">Nezávazná konzultace</a>
+                <a href="#lp-portfolio-h" class="btn btn--outline">Portfolio</a>
+              </div>
+            </div>
+            <div class="lp-hero__author">
+              <img src="Obrazky/harmonicky-web-4.jpg" width="820" height="1230" alt="Anna Mlčochová" class="lp-hero__author-avatar">
+              <p class="lp-hero__author-text">Jsem Anna Mlčochová &middot; Webdesignérka se specializací právě na tento
+                obor.</p>
+            </div>
+          </div>
+
+          <!-- Pravé fotky -->
+          <div class="lp-hero__images lp-hero__images--right" aria-hidden="true">
+            <div class="lp-hero__img lp-hero__img--4">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-kosmetika.png" width="1024" height="1024" alt="Kosmetika" loading="lazy">
+            </div>
+            <div class="lp-hero__img lp-hero__img--5">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-fyzio.png" width="1024" height="1024" alt="Fyzioterapie" loading="lazy">
+            </div>
+            <div class="lp-hero__img lp-hero__img--6">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-barber.png" width="1024" height="1024" alt="Barber" loading="lazy">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 3 — VÝPIS PROFESÍ
+    ============================================================ -->
+    <section class="section lp-professions" aria-labelledby="lp-professions-h">
+      <div class="container">
+        <h2 class="section-title" id="lp-professions-h">Jste tady správně, pokud pracujete v&nbsp;těchto
+          <strong>SLUŽBÁCH</strong>
+        </h2>
+        <div class="lp-professions__tags">
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Masáže</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Kosmetika</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Kadeřnictví</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Barber</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Fyzioterapie</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Wellness</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Fitness</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Pedikúra</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Manikúra</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Tattoo studio</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Spa</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>Head spa</span>
+          <span class="lp-profession-tag"><i class="fa-regular fa-circle-check" aria-hidden="true"></i>… a&nbsp;další</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 4 — ZNÁM VÁŠ SVĚT
+    ============================================================ -->
+    <section class="section lp-empathy" aria-labelledby="lp-empathy-h">
+      <div class="container">
+        <div class="lp-empathy__layout">
+          <div class="lp-empathy__photo">
+            <img src="Obrazky/harmonicky-web-6.jpg" width="2000" height="1333" alt="Anna Mlčochová" loading="lazy">
+          </div>
+          <div class="lp-empathy__content">
+            <h2 class="section-title" id="lp-empathy-h">Znám váš <strong>SVĚT</strong></h2>
+            <div class="lp-empathy__body">
+              <p>Každý den ve své práci pečujete o druhé a&nbsp;<strong>předáváte kus sebe</strong>. Investujete svůj
+                čas, svou energii,
+                svou péči.<br><strong>A&nbsp;lidé to milují!</strong></p>
+              <p>Cítí se díky vám ve svém těle líp, odcházejí spokojenější a&nbsp;krásnější. Taková práce má
+                <strong>hluboký smysl</strong>. <br><strong>A&nbsp;zaslouží si být vidět</strong>.
+              </p>
+              <p>Rozumím vám. Sama vím, jak je důležité mít podporu, která vidí <strong>hodnotu vaší práce</strong>.
+                Proto tvořím weby,
+                které tuhle hodnotu <strong>ukazují světu</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 5 — CO PRO VÁS WEB UDĚLÁ
+    ============================================================ -->
+    <section class="section lp-benefits" aria-labelledby="lp-benefits-h">
+      <div class="container">
+        <h2 class="section-title" id="lp-benefits-h">Vytvořím vám web, který <strong>PRACUJE</strong> za vás</h2>
+        <div class="lp-benefits__grid">
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <div class="brand-dot"><img src="Obrazky/logo-male.png" width="700" height="700" alt="" aria-hidden="true" loading="lazy"></div>
+              <div>
+                <h3>Otevírá cestu novým klientům</h3>
+                <p>Lidé vás mohou objevit i bez doporučení a rovnou zjistí, co nabízíte a jak se objednat.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="brand-dot"><img src="Obrazky/logo-male.png" width="700" height="700" alt="" aria-hidden="true" loading="lazy"></div>
+              <div>
+                <h3>Pomáhá klientům rozhodnout se</h3>
+                <p>Ještě než vás kontaktují, mají jasno, co nabízíte, kolik to stojí a jestli jste pro ně ta pravá
+                  volba.</p>
+              </div>
+            </div>
+          </div>
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <div class="brand-dot"><img src="Obrazky/logo-male.png" width="700" height="700" alt="" aria-hidden="true" loading="lazy"></div>
+              <div>
+                <h3>Ušetří vám desítky zpráv denně</h3>
+                <p>Zodpoví otázky na ceny, služby i objednání zatímco vy se soustředíte na svou
+                  práci.
+                </p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="brand-dot"><img src="Obrazky/logo-male.png" width="700" height="700" alt="" aria-hidden="true" loading="lazy"></div>
+              <div>
+                <h3>Podpoří to, jak působíte navenek</h3>
+                <p>Váš web ladí s kvalitou vašich služeb a dává lidem pocit, že jsou na správném místě.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 5b — O MNĚ
+    ============================================================ -->
+    <section class="lp-about" aria-labelledby="lp-about-h">
+      <div class="lp-about__overlay">
+        <div class="lp-about__glass">
+          <h2 class="section-title" id="lp-about-h">Jsem <strong>ANIČKA</strong>, webdesignérka</h2>
+          <p><strong>Pomáhám ukázat světu, kdo opravdu jste a&nbsp;v&nbsp;čem jste dobří.</strong></p>
+          <p>Mám dar vnímat <strong>strukturu i&nbsp;krásu</strong> a&nbsp;přetvořit je ve <strong>funkční
+              celek</strong>. Ráda pracuji s&nbsp;řádem a&nbsp;technickou čistotou, zároveň vnímám estetiku, jemnost
+            i&nbsp;energii, kterou jde cítit mezi řádky.</p>
+          <p>Tvořím intuitivně, s&nbsp;citem pro všechno, co je pro vás důležité, a&nbsp;otevírám prostor, kde vynikne
+            <strong>to nejlepší z&nbsp;vás</strong>. Miluju, když vše ladí, vizuálně, prakticky i&nbsp;lidsky.</p>
+          <div class="lp-about__badge">
+            <img src="Obrazky/logo-paticka.png" width="1054" height="1054" alt="Harmonický web" class="lp-about__logo">
+            <span class="lp-about__signature" aria-hidden="true">Anna Mlčochová</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 6 — JAK SPOLUPRÁCE PROBÍHÁ
+    ============================================================ -->
+    <section class="section lp-steps" aria-labelledby="lp-steps-h">
+      <div class="container">
+        <h2 class="section-title" id="lp-steps-h">Jak vypadá <strong>SPOLUPRÁCE</strong>?</h2>
+        <div class="lp-steps__grid">
+          <div class="lp-step">
+            <div class="lp-step__bubble"><span>1</span></div>
+            <h3 class="lp-step__title">Společné naladění</h3>
+            <p class="lp-step__text">Spojíme se a&nbsp;řeknete mi, co máte na srdci. Navrhneme řešení, poradím
+              vám s&nbsp;podklady a&nbsp;celým procesem vás provedu.</p>
+          </div>
+          <div class="lp-step">
+            <div class="lp-step__bubble"><span>2</span></div>
+            <h3 class="lp-step__title">Cenová nabídka</h3>
+            <p class="lp-step__text">Připravím individuální nabídku přesně podle vašich potřeb. Po odsouhlasení
+              a&nbsp;zaplacení zálohy můžu začít tvořit.</p>
+          </div>
+          <div class="lp-step">
+            <div class="lp-step__bubble"><span>3</span></div>
+            <h3 class="lp-step__title">Tvorba webu</h3>
+            <p class="lp-step__text">Web vzniká přibližně 1&nbsp;měsíc. Grafickou podobu průběžně konzultujeme, až
+              doladíme všechny detaily.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 6b — CENÍK
+    ============================================================ -->
+    <section class="section lp-pricing" aria-labelledby="lp-pricing-h">
+      <div class="container">
+        <div class="lp-pricing__card">
+          <h2 class="lp-pricing__title" id="lp-pricing-h">Kolik váš nový web <strong>BUDE STÁT</strong>?</h2>
+          <div class="lp-pricing__divider"></div>
+          <div class="lp-pricing__price">
+            <span class="lp-pricing__from">od</span>
+            <span class="lp-pricing__amount">10&nbsp;000&nbsp;Kč</span>
+          </div>
+          <p class="lp-pricing__text">Cena závisí na rozsahu a&nbsp;potřebách vašeho podnikání. Konkrétní nabídku
+            připravím individuálně po&nbsp;úvodní konzultaci.</p>
+          <a href="#konzultace" class="btn btn--outline lp-pricing__btn">Nezávazná konzultace</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 7 — PORTFOLIO
+    ============================================================ -->
+    <section class="section portfolio lp-portfolio" aria-labelledby="lp-portfolio-h">
+      <div class="container">
+        <h2 class="section-title" id="lp-portfolio-h">Mrkněte na mé <strong>PORTFOLIO</strong></h2>
+
+        <div class="portfolio-grid">
+
+          <article class="portfolio-card">
+            <div class="portfolio-mockup">
+              <img src="Obrazky/Portfolio/mockup-kometika-aneta.png" width="1600" height="1000" alt="Náhled webu Kosmetika Aneta"
+                class="portfolio-mockup-img" loading="eager">
+            </div>
+            <div class="portfolio-info">
+              <h4>Kosmetika Aneta</h4>
+              <p>Jednoduchý web pro kosmetičku a&nbsp;prezentaci jejích služeb.</p>
+              <a href="https://kosmetika-aneta.cz" target="_blank" rel="noopener noreferrer"
+                class="portfolio-link">kosmetika-aneta.cz <i class="fa-solid fa-arrow-up-right-from-square"
+                  aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-mockup">
+              <img src="Obrazky/Portfolio/mockup-cyklosport.png" width="1600" height="1000" alt="Náhled webu CykloSport Popelka"
+                class="portfolio-mockup-img" loading="lazy">
+            </div>
+            <div class="portfolio-info">
+              <h4>CykloSport Popelka</h4>
+              <p>Web pro místní prodejnu a&nbsp;servis jízdních kol a&nbsp;elektrokol s&nbsp;poctivým přístupem.</p>
+              <a href="https://cyklosportpopelka.cz" target="_blank" rel="noopener noreferrer"
+                class="portfolio-link">cyklosportpopelka.cz <i class="fa-solid fa-arrow-up-right-from-square"
+                  aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-mockup">
+              <img src="Obrazky/Portfolio/mockup-rudolfguzik.png" width="1600" height="1000" alt="Náhled webu Rudolf Guzik"
+                class="portfolio-mockup-img" loading="lazy">
+            </div>
+            <div class="portfolio-info">
+              <h4>Rudolf Guzik</h4>
+              <p>Web pro profesionálního kouče s&nbsp;důrazem na autenticitu a&nbsp;osobní přístup.</p>
+              <a href="https://rudolfguzik.cz" target="_blank" rel="noopener noreferrer"
+                class="portfolio-link">rudolfguzik.cz <i class="fa-solid fa-arrow-up-right-from-square"
+                  aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="benefity__footer">
+          <a href="/portfolio" class="btn btn--outline" target="_blank" rel="noopener noreferrer">Prohlédnout celé portfolio</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 8 — REFERENCE
+    ============================================================ -->
+    <section class="section reference">
+      <div class="container">
+        <div class="refs-grid">
+
+          <blockquote class="ref-card ref-card--collapsible">
+            <div class="ref-card__body">
+              <p>Na Aničku jsem se obrátila, když jsem potřebovala přesunout svůj web na jinou platformu. Navíc
+                jsem se potřebovala <strong>trefit do časového okna mezi dvěma kampaněmi</strong>, takže celý
+                přesun byl časově docela napnutý.</p>
+              <p>Anička odvedla perfektní práci. Krásně se <strong>trefila do mé představy vizuálu</strong>, web
+                je <strong>funkční, přehledný</strong> a&nbsp;v&nbsp;pozadí mám vytvořené další stránky, které
+                postupně naplním obsahem, až&nbsp;přijde jejich čas.</p>
+              <p>Moc si cením i&nbsp;Aniččiny <strong>jasné a&nbsp;transparentní komunikace a&nbsp;schopnosti
+                  srozumitelně vysvětlit technické věci</strong> i&nbsp;takové techno-lamě jako jsem já.</p>
+              <p>Vše klaplo podle plánu a&nbsp;nijak mi to nezdrželo plán kampaní. Rozhodně spolupráci doporučuji.</p>
+            </div>
+            <button class="ref-card__more" aria-expanded="false">
+              <span>Číst více</span>
+              <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
+            </button>
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-alena-hanusova.jpg" width="1000" height="1000" alt="Alena Hanušová" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Alena Hanušová</strong>
+                <cite class="ref-card__role">Byznys astroložka a&nbsp;mentorka, <a href="https://alenahanusova.cz"
+                    target="_blank" rel="noopener noreferrer" class="portfolio-link">alenahanusova.cz <i
+                      class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="ref-card">
+            <div class="ref-card__body">
+              <p>Potřeboval jsem vytvořit web, který bude kvůli mé činnosti <strong>opravdu osobitý
+                  a&nbsp;autentický</strong>.</p>
+              <p>Měl jsem velké štěstí, že jsem se dostal k&nbsp;Aničce. Jako webařka dokáže <strong>propojit
+                  intuici, výtvarné cítění i&nbsp;zdravý rozum</strong>, a&nbsp;právě tahle kombinace je podle mě
+                pro tvorbu webu ideální.</p>
+              <p>Z&nbsp;mých textů <strong>vybrala to nejdůležitější</strong>, dala jim smysluplné flow
+                a&nbsp;celé to nádherně barevně vyladila. Opravdu profesionální práce!</p>
+            </div>
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-rudolf-guzik.jpg" width="500" height="500" alt="Rudolf Guzik" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Rudolf Guzik</strong>
+                <cite class="ref-card__role">Profesionální kouč, <a href="https://rudolfguzik.cz" target="_blank"
+                    rel="noopener noreferrer" class="portfolio-link">rudolfguzik.cz <i
+                      class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="ref-card ref-card--collapsible">
+            <div class="ref-card__body">
+              <p>S&nbsp;Aničkou dlouhodobě spolupracuji na mých online projektech a&nbsp;prodejních stránkách.</p>
+              <p>Anička má naprosto unikátní schopnost <strong>vystihnout tu správnou esenci</strong>. Tu vibraci,
+                kterou chcete na svém webu zachytit, a&nbsp;zároveň kterou potřebují vaši klienti vidět
+                a&nbsp;cítit.</p>
+              <p>Její weby jsou <strong>nejen technicky naprosto precizní, ale i&nbsp;esteticky krásné</strong>
+                a&nbsp;jedinečné v&nbsp;tom, že přesně ladí s&nbsp;potřebami klienta i&nbsp;jeho zákazníka, pro
+                kterého jsou tvořeny.</p>
+              <p>Jsem s&nbsp;Aniččinou péčí nadmíru spokojená a&nbsp;její webovou tvorbu s&nbsp;radostí
+                doporučuji.</p>
+            </div>
+            <button class="ref-card__more" aria-expanded="false">
+              <span>Číst více</span>
+              <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
+            </button>
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-zaneta-ariati.jpg" width="1000" height="1000" alt="Žaneta Ariati" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Žaneta Ariati</strong>
+                <cite class="ref-card__role">Soul mentorka a&nbsp;byznys čarodějka</cite>
+              </div>
+            </footer>
+          </blockquote>
+
+        </div>
+
+        <div class="reference__cta">
+          <a href="#konzultace" class="btn btn--primary">Chci taky svůj web</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEKCE 9 — FAQ
+    ============================================================ -->
+    <section class="section lp-faq" aria-labelledby="lp-faq-h">
+      <div class="container">
+        <h2 class="section-title" id="lp-faq-h">Nejčastější <strong>OTÁZKY</strong></h2>
+
+        <div class="accordion-grid">
+          <div class="accordion-col">
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-1">
+                <h3 class="accordion-title">Kolik stojí web pro masérku nebo kosmetičku?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-1">
+                <div class="accordion-content">
+                  <p>Cena se odvíjí od rozsahu a&nbsp;potřeb vašeho podnikání. Konkrétní nabídku připravím vždy
+                    individuálně po úvodní konzultaci tak, aby odpovídala přesně tomu, co potřebujete. Weby tvořím
+                    od&nbsp;<strong>10&nbsp;000&nbsp;Kč</strong>.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-2">
+                <h3 class="accordion-title">Jak dlouho trvá vytvoření webu?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-2">
+                <div class="accordion-content">
+                  <p>Od dodání podkladů z vaší strany mi práce zabere zpravidla <strong>1&nbsp;měsíc</strong>. Záleží na
+                    rozsahu webu. Termín si vždy domluvíme předem, abyste měli představu.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-3">
+                <h3 class="accordion-title">Musím si připravit texty sám/sama?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-3">
+                <div class="accordion-content">
+                  <p>Na úvodní schůzce se domluvíme, v&nbsp;jakém rozsahu od vás budu potřebovat texty a&nbsp;podklady.
+                    Většina vyplyne už ze samotného úvodního rozhovoru. Já potom texty upravím a&nbsp;zasadím do webu
+                    tak, aby správně fungovaly a&nbsp;měly ten efekt, co potřebujeme.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-4">
+                <h3 class="accordion-title">Co všechno web pro péči o tělo obsahuje?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-4">
+                <div class="accordion-content">
+                  <p>Každý web je jiný a&nbsp;stavím ho přímo vám na míru. Vždy ale řešíme přehlednou prezentaci vašich
+                    služeb, kontakt, ceník pokud ho na webu chcete, vaši přidanou hodnotu a&nbsp;jasnou výzvu
+                    k&nbsp;akci. A&nbsp;samozřejmě to, aby web dobře fungoval na mobilu, tabletu i&nbsp;na počítači.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="accordion-col">
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-5">
+                <h3 class="accordion-title">Budu moci web sám/sama upravovat?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-5">
+                <div class="accordion-content">
+                  <p>Stavím weby s&nbsp;redakčním systémem i&nbsp;bez, tedy volba je na vás. Pokud si chcete základní
+                    úpravy dělat sami, můžu vás do systému zaškolit. Ráda vám však budu k&nbsp;ruce a&nbsp;upravím web
+                    podle vašich instrukcí kdykoliv si vzpomenete.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-6">
+                <h3 class="accordion-title">Děláte weby i pro začínající podnikatele?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-6">
+                <div class="accordion-content">
+                  <p>Ano, moc ráda. Začátek podnikání je ten nejlepší moment pro vyladění a&nbsp;návrh kvalitního webu.
+                    Budujete značku od základů a&nbsp;já vám pomůžu vystihnout vaši přidanou hodnotu a&nbsp;to, co
+                    potřebují vaši zákazníci slyšet.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-7">
+                <h3 class="accordion-title">Můžete mi předělat nebo upravit stávající web?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-7">
+                <div class="accordion-content">
+                  <p>Záleží na tom, jakým způsobem je váš web postaven. Ráda se na&nbsp;něj mrknu a&nbsp;řeknu vám, co
+                    je možné a&nbsp;co by se vyplatilo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-8">
+                <h3 class="accordion-title">Potřebuji doménu a hosting. Poradíte mi s tím?</h3>
+                <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-panel" id="faq-8">
+                <div class="accordion-content">
+                  <p>Ano, s&nbsp;výběrem domény i&nbsp;hostingu vám ráda poradím a&nbsp;celé nastavení zařídím za vás.
+                    Doménu i&nbsp;hosting vždy objednávám přímo na vás, aby tyto služby byly ve vašem vlastnictví
+                    a&nbsp;abyste se ke správě kdykoliv dostali sami.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SEKCE 11 — ZÁVĚREČNÁ CTA + KONTAKTNÍ FORMULÁŘ
+    ============================================================ -->
+    <section class="section kontakt" id="konzultace" aria-labelledby="lp-cta-h">
+      <div class="container">
+        <div class="kontakt__body">
+
+          <div class="kontakt__left">
+            <p class="section-label">Udělejte první krok</p>
+            <h2 class="section-title" id="lp-cta-h">Ozvěte se mi a&nbsp;společně se podíváme, jak může váš
+              <strong>WEB</strong> vypadat
+            </h2>
+            <p class="kontakt__perex">Můžeme se sejít osobně v&nbsp;<strong>Olomouci a&nbsp;okolí</strong> nebo online.
+              Těším se na vás!</p>
+
+            <div class="kontakt__contacts" role="list">
+              <div class="kontakt__contact-item" role="listitem">
+                <span class="kontakt__contact-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                <span class="kontakt__contact-text">
+                  <span class="kontakt__contact-label">E-mail</span>
+                  <span class="kontakt__contact-value kontakt__contact-value--email">
+                    <a href="mailto:anna@harmonickyweb.cz" class="kontakt__email-link">anna@harmonickyweb.cz</a>
+                    <button class="copy-email-btn" aria-label="Zkopírovat e-mail" data-copy="anna@harmonickyweb.cz">
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </span>
+              </div>
+              <a href="tel:+420732789199" class="kontakt__contact-item" role="listitem">
+                <span class="kontakt__contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                <span class="kontakt__contact-text">
+                  <span class="kontakt__contact-label">Telefon</span>
+                  <span class="kontakt__contact-value">+420&nbsp;732&nbsp;789&nbsp;199</span>
+                </span>
+              </a>
+              <div class="kontakt__contact-item kontakt__contact-item--static" role="listitem">
+                <span class="kontakt__contact-icon" aria-hidden="true"><i class="fa-solid fa-id-card"></i></span>
+                <span class="kontakt__contact-text">
+                  <span class="kontakt__contact-label">Identifikační údaje</span>
+                  <span class="kontakt__contact-value">Anna Mlčochová<br>Třebčínská 335,
+                    783&nbsp;49&nbsp;Lutín<br>IČ:&nbsp;01622757</span>
+                  <span class="kontakt__contact-note">Fyzická osoba zapsaná v&nbsp;živnostenském rejstříku
+                    od&nbsp;22.&nbsp;4.&nbsp;2013.</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kontakt__form-card">
+            <h3 class="kontakt__form-title">Napište mi</h3>
+            <form class="contact-form" action="https://formspree.io/f/mqpaqgvj" method="POST" novalidate
+              aria-label="Kontaktní formulář">
+              <input type="hidden" name="_subject" value="Nová poptávka z landing page (maséři a péče o tělo)">
+              <input type="hidden" name="_language" value="cs">
+              <input type="hidden" name="_next" value="https://harmonickyweb.cz/dekuji">
+
+              <div class="form-honeypot" aria-hidden="true">
+                <label for="website-lp1">Nevyplňujte</label>
+                <input type="text" id="website-lp1" name="_gotcha" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div role="alert" aria-live="assertive" class="form-alert"></div>
+
+              <div class="form-group">
+                <label for="name-lp1" class="form-label">Jméno a příjmení <span aria-hidden="true">*</span></label>
+                <input type="text" id="name-lp1" name="name" class="form-input" required autocomplete="name"
+                  placeholder="Jana Nováková">
+              </div>
+              <div class="form-group">
+                <label for="email-lp1" class="form-label">Emailová adresa <span aria-hidden="true">*</span></label>
+                <input type="email" id="email-lp1" name="email" class="form-input" required autocomplete="email"
+                  placeholder="jana@example.cz">
+              </div>
+              <div class="form-group">
+                <label for="phone-lp1" class="form-label">Telefon</label>
+                <input type="tel" id="phone-lp1" name="phone" class="form-input" autocomplete="tel"
+                  placeholder="+420 123 456 789">
+              </div>
+              <div class="form-group">
+                <label for="message-lp1" class="form-label">Zpráva <span aria-hidden="true">*</span></label>
+                <textarea id="message-lp1" name="message" class="form-input form-textarea" required rows="4"
+                  placeholder="Napište mi, co máte na srdci…"></textarea>
+              </div>
+              <div class="form-group form-group--check">
+                <input type="checkbox" id="gdpr-lp1" name="gdpr" required>
+                <label for="gdpr-lp1">Souhlasím se zpracováním osobních údajů pro vyřízení dotazu.</label>
+              </div>
+              <button type="submit" class="btn btn--primary kontakt__submit">ODESLAT</button>
+            </form>
+          </div>
+
+        </div><!-- /.kontakt__body -->
+
+
+      </div><!-- /.container -->
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bar">
+        <p class="footer-copy">Copyright &copy; 2026 Anna Mlčochová. Všechna práva vyhrazena. Webdesign <a href="https://harmonickyweb.cz" target="_blank" rel="noopener noreferrer" class="footer-link">harmonickyweb.cz</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

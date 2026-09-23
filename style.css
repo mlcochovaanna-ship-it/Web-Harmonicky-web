@@ -1,0 +1,3210 @@
+/* ============================================================
+   HARMONICKÝ WEB – style.css
+   Anna Mlčochová | harmonickyweb.cz
+   ============================================================ */
+
+/* ============================================================
+   SELF-HOSTED FONTS
+   ============================================================ */
+@font-face {
+  font-family: 'Gistesy';
+  src: url('Fonty/Gistesy.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('Fonty/EBGaramond-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('Fonty/EBGaramond-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('Fonty/EBGaramond-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('Fonty/EBGaramond-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('Fonty/EBGaramond-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Fonty/Montserrat-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Fonty/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Fonty/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Fonty/Montserrat-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Fonty/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   CSS PROMĚNNÉ
+   ============================================================ */
+:root {
+  /* Barvy */
+  --c-accent: #015c63;
+  /* POUZE tlačítka, ikony, zvýraznění */
+  --c-accent-dark: #014a50;
+  --c-accent-deep: #01373b;
+  /* tmavý konec gradientu */
+  --c-accent-rgb: 1, 92, 99;
+  --g-accent: linear-gradient(to right, #01373b 0%, #015c63 100%);
+  /* brand gradient */
+
+  --c-primary: #f0ede8;
+  /* hlavní pozadí */
+  --c-secondary: #fde9e3;
+  /* karty, akcentní plochy */
+  --c-white: #ffffff;
+  --c-text: #333333;
+  --c-muted: #6b6b6b;
+  --c-border: rgba(1, 92, 99, 0.12);
+
+  /* Fonty */
+  --f-body: 'Montserrat', sans-serif;
+  --f-heading: 'EB Garamond', serif;
+
+  /* Velikosti textu – fluid */
+  --t-sm: clamp(0.7rem, 1.1vw, 0.8rem);
+  --t-base: 1rem;
+  --t-lg: 1.125rem;
+  --t-xl: clamp(1.125rem, 1.8vw, 1.125rem);
+  --t-ui: clamp(0.75rem, 1.2vw, 0.875rem);
+  /* tlačítka, menu, eyebrow */
+
+  /* Nadpisy – clamp */
+  --h2: clamp(1.5rem, 2.7vw, 2.2rem);
+  --h3: clamp(1.1rem, 1.7vw, 1.4rem);
+  --h4: clamp(0.9rem, 1.3vw, 1.1rem);
+  --hero-h2: clamp(2.2rem, 4.2vw, 3.2rem);
+
+  /* Spacing – 8px grid */
+  --s1: 0.5rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 2rem;
+  --s5: 2.5rem;
+  --s6: 3rem;
+  --s8: 4rem;
+  --s10: 5rem;
+  --s12: 6rem;
+
+  /* Layout */
+  --nav-h: 72px;
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  /* Stíny */
+  --sh-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --sh-md: 0 4px 20px rgba(0, 0, 0, 0.09);
+  --sh-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+
+  /* Přechod */
+  --tr: 0.28s ease;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  scroll-padding-top: var(--nav-h);
+}
+
+body {
+  font-family: var(--f-body);
+  font-size: var(--t-base);
+  line-height: 1.65;
+  color: var(--c-text);
+  background: var(--c-white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+  transition: color var(--tr);
+}
+
+a:hover {
+  color: var(--c-accent-dark);
+  text-decoration: underline;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+p {
+  margin-bottom: var(--s2);
+  text-align: left;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TYPOGRAFIE
+   ============================================================ */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--f-heading);
+  line-height: 1.2;
+  color: var(--c-text);
+}
+
+h2 {
+  font-size: var(--h2);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--h3);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--h4);
+  font-weight: 600;
+}
+
+/* ============================================================
+   KONTEJNER
+   ============================================================ */
+.container {
+  width: 85%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+/* ============================================================
+   SEKCE – ZÁKLADNÍ
+   ============================================================ */
+.section {
+  padding-block: var(--s12);
+}
+
+.section-label {
+  display: block;
+  width: fit-content;
+  font-size: var(--t-ui);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: var(--s2);
+}
+
+.label-inline {
+  font-size: var(--t-ui);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+/* Centrované eyebrows – vycentrovat element samotný */
+.jaky-web .section-label,
+.o-mne .section-label,
+.pribeh .section-label,
+.spoluprace .section-label,
+.cenik .section-label,
+.faq .section-label,
+.portfolio .section-label,
+.reference .section-label,
+.benefity .section-label {
+  margin-inline: auto;
+}
+
+.section-title {
+  font-size: var(--h2);
+  margin-bottom: 4rem;
+  max-width: 900px;
+}
+
+/* ============================================================
+   TLAČÍTKA – akcentová barva POUZE zde
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s1);
+  padding: 0.75rem 2rem;
+  font-family: var(--f-body);
+  font-size: var(--t-ui);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--tr), color var(--tr), border-color var(--tr), transform 0.15s, box-shadow var(--tr);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-md);
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: none;
+}
+
+/* Primární – gradient tmavý → teal, bez rámečku */
+.btn--primary {
+  background: var(--g-accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+.btn--primary:hover {
+  background: linear-gradient(to right, #012527 0%, var(--c-accent-dark) 100%);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Outline – průhledný, gradient text, teal rámeček */
+.btn--outline {
+  background: var(--g-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 2px solid var(--c-accent);
+}
+
+.btn--outline:hover {
+  background: linear-gradient(to right, #012527 0%, var(--c-accent-dark) 100%);
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: #fff;
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Ghost – průhledný světlý */
+.btn--ghost {
+  background: transparent;
+  color: var(--c-text);
+  border: 2px solid rgba(51, 51, 51, 0.3);
+}
+
+.btn--ghost:hover {
+  background: var(--g-accent);
+  border-color: transparent;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+.btn--sm {
+  padding: 0.4rem 1rem;
+  font-size: var(--t-sm);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* ============================================================
+   NAVIGACE
+   ============================================================ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: none;
+  transition: background var(--tr), box-shadow var(--tr), border-color var(--tr);
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--sh-md);
+}
+
+.navbar {
+  height: var(--nav-h);
+}
+
+.nav-container {
+  width: 85%;
+  max-width: 1280px;
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.nav-logo:hover {
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 56px;
+  width: auto;
+}
+
+.nav-logo__text {
+  font-family: var(--f-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  background: var(--g-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  font-size: var(--t-ui);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  padding: 0.55rem 0.65rem;
+  border-radius: 99px;
+  transition: color var(--tr), background var(--tr);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--c-accent);
+  background: transparent;
+  text-decoration: none;
+}
+
+.nav-link--active {
+  color: var(--c-accent) !important;
+}
+
+/* Kontakt – tlačítko */
+.nav-link--cta {
+  background: var(--g-accent);
+  color: #fff !important;
+  padding: 0.6rem 1.4rem;
+  margin-left: var(--s1);
+  transition: background var(--tr), color var(--tr), transform 0.15s, box-shadow var(--tr);
+}
+
+.nav-link--cta:hover {
+  background: linear-gradient(to right, #012527 0%, var(--c-accent-dark) 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: var(--sh-md);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--c-text);
+  border-radius: 2px;
+  transition: transform var(--tr), opacity var(--tr);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-h);
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% top;
+}
+
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: 85%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-block: var(--s10);
+}
+
+/* Karta přes fotku – glass efekt, průhledný */
+.hero__card {
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--r-xl);
+  padding: var(--s6) 2.75rem;
+  box-shadow: var(--sh-md);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+/* H1 – malé verzálky, eyebrow */
+.hero__eyebrow {
+  font-family: var(--f-body);
+  font-size: var(--t-ui);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: var(--s2);
+  line-height: 1.4;
+}
+
+/* H2 – dominantní */
+.hero__title {
+  font-family: var(--f-heading);
+  font-size: var(--hero-h2);
+  font-weight: 600;
+  color: var(--c-text);
+  line-height: 1.15;
+  margin-bottom: var(--s3);
+}
+
+.hero__desc {
+  font-size: var(--t-lg);
+  color: var(--c-text);
+  margin-bottom: var(--s4);
+  line-height: 1.65;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+/* Pás pod hero */
+.hero-strip {
+  background: var(--g-accent);
+  padding: 1rem var(--s4);
+  text-align: center;
+}
+
+.hero-strip p {
+  font-family: var(--f-body);
+  font-size: var(--t-ui);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+/* ============================================================
+   JAKÝ MŮŽE BÝT VÁŠ WEB
+   ============================================================ */
+.jaky-web {
+  background: var(--c-white);
+  padding-block: var(--s12);
+  position: relative;
+  overflow: hidden;
+}
+
+.jaky-web .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s4);
+}
+
+.feature-card {
+  background: var(--c-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--r-xl);
+  padding: 2.5rem;
+  box-shadow: var(--sh-sm);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--s4);
+}
+
+.feature-card__icon-wrap {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--g-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(1, 92, 99, 0.40);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-card__icon-wrap {
+  transform: scale(1.1);
+}
+
+.feature-card__icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.feature-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+}
+
+.feature-card__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: var(--t-base);
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.feature-card__text {
+  font-size: var(--t-base);
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   O MNĚ
+   ============================================================ */
+.o-mne {
+  background: var(--c-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.o-mne .section-label {
+  text-align: center;
+}
+
+.o-mne__heading {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* Orbital layout */
+.o-mne__intro {
+  text-align: center;
+  font-size: var(--t-base);
+  line-height: 1.7;
+  color: var(--c-text);
+  margin: 0 0 var(--s3);
+  max-width: 100%;
+}
+
+.o-mne__orbital {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  column-gap: 0;
+  align-items: stretch;
+}
+
+.o-mne__orbital-col {
+  display: flex;
+  flex-direction: column;
+  padding-block: 8%;
+  gap: var(--s3);
+}
+
+.o-mne__orbital-center {
+  display: flex;
+  align-items: stretch;
+}
+
+.o-mne__orbital-photo {
+  width: 100%;
+}
+
+.o-mne__orbital-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+}
+
+.o-mne__feature {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.o-mne__feature-text {
+  font-size: var(--t-base);
+  line-height: 1.6;
+  color: var(--c-text);
+  flex: 1;
+}
+
+.o-mne__feature--left .o-mne__feature-text {
+  text-align: right;
+  padding-right: var(--s2);
+}
+
+.o-mne__feature--right .o-mne__feature-text {
+  text-align: left;
+  padding-left: var(--s2);
+}
+
+.o-mne__feature-line {
+  flex-shrink: 0;
+  width: 20px;
+  height: 1px;
+  border-top: 1.5px dashed rgba(1, 92, 99, 0.45);
+}
+
+.o-mne__feature-dot {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--g-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 14px rgba(1, 92, 99, 0.45);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.o-mne__feature:hover .o-mne__feature-dot {
+  transform: scale(1.15);
+}
+
+.o-mne__feature--left .o-mne__feature-dot {
+  margin-right: -30px;
+}
+
+.o-mne__feature--right .o-mne__feature-dot {
+  margin-left: -30px;
+}
+
+.o-mne__feature-dot img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Sdílený teal kroužek – benefity + ceník */
+.brand-dot {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--g-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(1, 92, 99, 0.40);
+  transition: transform 0.3s ease;
+}
+
+.brand-dot img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.brand-dot--lg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: var(--s2);
+}
+
+.brand-dot--lg img {
+  width: 35px;
+  height: 35px;
+}
+
+/* ============================================================
+   PŘÍBĚH ACCORDION
+   ============================================================ */
+.pribeh {
+  padding-top: var(--s12);
+}
+
+.pribeh .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.pribeh .section-label {
+  text-align: center;
+}
+
+/* Grid – 2 sloupce při 4+ položkách */
+.accordion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--s6);
+  row-gap: var(--s3);
+}
+
+.accordion-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.accordion-item {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  width: 100%;
+  padding: var(--s3) var(--s4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--tr);
+}
+
+.accordion-trigger:hover {
+  background: #ffffff;
+}
+
+.accordion-title {
+  font-family: var(--f-heading);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 600;
+  color: var(--c-text);
+  margin: 0;
+  transition: color var(--tr);
+}
+
+.accordion-trigger:hover .accordion-title {
+  color: var(--c-text);
+}
+
+.accordion-icon {
+  color: var(--c-accent);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  transition: transform var(--tr);
+}
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.65s ease;
+}
+
+.accordion-panel.is-open {
+  max-height: 1200px;
+}
+
+.accordion-content {
+  padding: 0 var(--s4) var(--s4);
+  font-size: var(--t-base);
+  line-height: 1.65;
+}
+
+/* Variant pro ceník – kompaktnější */
+.accordion-item--sm {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.accordion-item--sm .accordion-trigger {
+  padding: var(--s2) 0;
+}
+
+.accordion-item--sm .accordion-content {
+  padding: 0 0 var(--s2);
+}
+
+.accordion-item--sm .accordion-title {
+  color: var(--c-text);
+}
+
+.accordion-item--sm .accordion-icon {
+  color: var(--c-accent);
+}
+
+.accordion-item--sm p {
+  color: var(--c-text);
+}
+
+.accordion-item--sm .accordion-trigger:hover {
+  background: transparent;
+}
+
+.accordion-item--sm .accordion-trigger:hover .accordion-title {
+  color: var(--c-text);
+}
+
+/* Fact list */
+.fact-list {
+  padding-left: var(--s2);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fact-list li {
+  position: relative;
+  padding-left: var(--s3);
+  line-height: 1.65;
+}
+
+.fact-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+.fact-conclusion {
+  margin-top: var(--s3) !important;
+  font-style: italic;
+}
+
+/* ============================================================
+   SPOLUPRÁCE – SVĚTLÉ POZADÍ (ne tmavé!)
+   ============================================================ */
+.spoluprace {
+  position: relative;
+  overflow: hidden;
+}
+
+.spoluprace__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.spoluprace__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Velmi světlý, teplý overlay – text bude tmavý */
+.spoluprace__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      #f0ede8 0%,
+      rgba(240, 237, 232, 0.8) 20%,
+      rgba(244, 241, 237, 0.3) 78%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+.spoluprace .container {
+  position: relative;
+  z-index: 1;
+}
+
+.spoluprace .section-label {
+  text-align: center;
+}
+
+.spoluprace .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* Kroky – 3 sloupce */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--s4);
+  row-gap: var(--s4);
+  margin-bottom: var(--s8);
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--r-xl);
+  padding: 2.5rem;
+  box-shadow: var(--sh-md);
+  transition: transform var(--tr);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Velké číslo – JEDINÉ místo kde teal slouží jako dekorativní typ */
+.step-num {
+  font-family: var(--f-heading);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  background: var(--g-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: var(--s2);
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.step-card:hover .step-num {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.step-name {
+  font-family: var(--f-body);
+  font-size: var(--t-ui);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  margin-bottom: var(--s3);
+}
+
+.step-card p:last-child {
+  color: var(--c-text);
+  font-size: var(--t-base);
+  line-height: 1.65;
+}
+
+.spoluprace__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s6);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--r-xl);
+  padding: var(--s6);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: var(--sh-md);
+}
+
+.spoluprace__footer__text {
+  text-align: left;
+}
+
+.spoluprace__footer p {
+  color: var(--c-text);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.spoluprace__footer .btn {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   CENÍK
+   ============================================================ */
+.cenik {
+  background: #ffffff;
+}
+
+.cenik .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.cenik .section-label {
+  text-align: center;
+}
+
+.cenik-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--s4);
+  row-gap: var(--s4);
+  align-items: start;
+}
+
+.cenik-card {
+  background: var(--c-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--r-xl);
+  padding: 2.5rem;
+  box-shadow: var(--sh-sm);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.cenik-card--featured {
+  border-color: var(--c-accent-deep);
+  background: var(--c-secondary);
+  box-shadow: var(--sh-md);
+}
+
+.cenik-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--g-accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 1rem;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.cenik-card:hover .brand-dot {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.cenik-name {
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  margin: 0;
+}
+
+.cenik-sub {
+  font-size: var(--t-base);
+  color: #777777;
+  font-weight: 400;
+  margin: 0;
+}
+
+.cenik-price {
+  font-family: var(--f-heading);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  color: var(--c-accent);
+  /* fallback */
+  background: var(--g-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  margin: 4px 0;
+}
+
+.cenik-desc {
+  font-size: var(--t-base);
+  color: var(--c-text);
+  line-height: 1.65;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.cenik-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--s8);
+}
+
+.cenik-footer p {
+  font-size: var(--t-base);
+  color: var(--c-text);
+  margin-bottom: var(--s4);
+  text-align: center;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq {
+  background: #ffffff;
+}
+
+.faq .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.faq .section-label {
+  text-align: center;
+}
+
+.faq .accordion-grid {
+  align-items: start;
+}
+
+.faq .accordion-item {
+  background: var(--c-primary);
+  border: none;
+}
+
+.faq .accordion-item.is-open {
+  background: var(--c-primary);
+}
+
+.faq .accordion-icon {
+  color: var(--c-accent);
+}
+
+.faq .accordion-trigger:hover {
+  background: var(--c-primary);
+}
+
+.faq .fact-list {
+  padding-left: 0;
+  gap: var(--s3);
+}
+
+.faq .fact-list li {
+  padding-left: 0;
+}
+
+.faq .fact-list li::before {
+  display: none;
+}
+
+.faq .fact-list--dot {
+  padding-left: var(--s2);
+  gap: var(--s1);
+}
+
+.faq .fact-list--dot li {
+  padding-left: var(--s3);
+}
+
+.faq .fact-list--dot li::before {
+  display: block;
+}
+
+.faq .fact-list--dot+p {
+  margin-top: var(--s4);
+}
+
+/* ============================================================
+   PORTFOLIO
+   ============================================================ */
+.portfolio {
+  background: linear-gradient(to bottom, #f0ede8 0%, #fdf6f2 50%, #f0ede8 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio .section-label {
+  text-align: center;
+}
+
+.portfolio .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.portfolio::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(1, 92, 99, 0.04) 0%, transparent 70%);
+  top: 50%;
+  right: -150px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.portfolio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s8);
+}
+
+.portfolio-card {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  align-items: center;
+  gap: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  transition: transform var(--tr);
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Alternující rozvržení – sudé karty mají mockup vpravo */
+.portfolio-card:nth-child(even) {
+  grid-template-columns: 2fr 3fr;
+}
+
+.portfolio-card:nth-child(even) .portfolio-mockup {
+  order: 2;
+}
+
+.portfolio-card:nth-child(even) .portfolio-info {
+  order: 1;
+}
+
+.portfolio-info .portfolio-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.portfolio-mockup {
+  padding: 0;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio-mockup-img {
+  width: 100%;
+  display: block;
+  border-radius: var(--r-md);
+  object-fit: contain;
+}
+
+.portfolio-info {
+  background: var(--c-white);
+  border: none;
+  /* Levý okraj (k mockupu) – bez zaoblení, bez borderu */
+  border-radius: 0 var(--r-lg) var(--r-lg) 0;
+  border-left: none;
+  padding: var(--s5);
+  box-shadow: var(--sh-md);
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  /* Karta prolézá pod mockup zleva */
+  margin-left: -7rem;
+  padding-left: calc(var(--s5) + var(--s4) + 7rem);
+}
+
+/* Fade – gradient překryje levý okraj karty, splyne s pozadím */
+.portfolio-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 7rem;
+  background: linear-gradient(to right, var(--c-primary) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Sudé karty – info vlevo, mockup vpravo → prolézá zprava */
+.portfolio-card:nth-child(even) .portfolio-info {
+  border-radius: var(--r-lg) 0 0 var(--r-lg);
+  border-left: none;
+  border-right: none;
+  margin-left: 0;
+  padding-left: var(--s5);
+  margin-right: -7rem;
+  padding-right: calc(var(--s5) + var(--s4) + 7rem);
+}
+
+.portfolio-card:nth-child(even) .portfolio-info::before {
+  right: 0;
+  left: auto;
+  background: linear-gradient(to left, var(--c-primary) 0%, transparent 100%);
+}
+
+.portfolio-info h4 {
+  font-size: var(--h3);
+  margin-bottom: var(--s1);
+}
+
+.portfolio-info p {
+  font-size: var(--t-base);
+  color: var(--c-muted);
+  margin-bottom: var(--s2);
+}
+
+.portfolio-link {
+  font-size: var(--t-base);
+  font-weight: 600;
+  color: var(--c-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ref-card__role .portfolio-link {
+  font-size: inherit;
+}
+
+.portfolio-footer {
+  text-align: center;
+  margin-top: var(--s8);
+}
+
+/* ============================================================
+   REFERENCE – SLIDER + SVĚTLÉ POZADÍ
+   ============================================================ */
+.reference {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--c-secondary);
+  padding-block-start: var(--s12);
+}
+
+.reference__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.reference__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Stejný přechod jako spolupráce */
+.reference__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      #f0ede8 0%,
+      rgba(240, 237, 232, 0.8) 20%,
+      rgba(244, 241, 237, 0.3) 78%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+.reference .container {
+  position: relative;
+  z-index: 1;
+}
+
+.reference .section-label {
+  color: var(--c-accent);
+  text-align: center;
+}
+
+.reference .section-title {
+  color: var(--c-text);
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* Grid referencí */
+.refs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s4);
+  margin-top: var(--s8);
+}
+
+/* Karta reference */
+.ref-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-md);
+  padding: 2.5rem;
+  margin: 0;
+}
+
+.ref-card__body {
+  padding: 0;
+}
+
+.ref-card__body p {
+  font-size: var(--t-base);
+  color: var(--c-text);
+  line-height: 1.65;
+}
+
+.ref-card__body p:last-child {
+  margin-bottom: 0;
+}
+
+.ref-card__body strong {
+  color: var(--c-text);
+}
+
+.ref-card__author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--s2);
+  text-align: left;
+  padding-top: 1.25rem;
+  margin-top: auto;
+}
+
+.ref-card__photo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ref-card__name {
+  display: block;
+  font-family: var(--f-heading);
+  font-style: normal;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: 0.1rem;
+}
+
+.ref-card__role {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--c-muted);
+  font-style: normal;
+}
+
+.ref-card__role a {
+  color: var(--c-accent);
+}
+
+/* Sbalitelná reference */
+.ref-card--collapsible .ref-card__body {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.ref-card--collapsible.is-open .ref-card__body,
+.ref-card--collapsible.peer-open .ref-card__body {
+  overflow: visible;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.ref-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: var(--c-accent);
+  font-size: var(--t-base);
+  font-family: var(--f-body);
+  cursor: pointer;
+  padding: 0;
+  margin-top: var(--s2);
+  margin-bottom: 0.75rem;
+}
+
+.ref-card__more i {
+  transition: transform var(--tr);
+  font-size: 0.75em;
+}
+
+.ref-card--collapsible.is-open .ref-card__more i,
+.ref-card--collapsible.peer-open .ref-card__more i {
+  transform: rotate(180deg);
+}
+
+.reference__cta {
+  text-align: center;
+  margin-top: var(--s8);
+}
+
+/* ============================================================
+   JAK WEB PROMĚNÍ PODNIKÁNÍ
+   ============================================================ */
+.benefity {
+  background: #f0ede8;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefity::before {
+  content: '';
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253, 233, 227, 0.7) 0%, transparent 70%);
+  bottom: -120px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.benefity .section-label {
+  text-align: center;
+}
+
+.benefity .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.benefity__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s6);
+  align-items: stretch;
+  margin-top: var(--s6);
+}
+
+.benefity__image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+}
+
+.benefity__image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  display: block;
+}
+
+.benefity__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefity__footer {
+  text-align: center;
+  margin-top: var(--s6);
+}
+
+.benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  margin-bottom: 0;
+}
+
+.benefit-item {
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.80);
+  border-radius: var(--r-md);
+  padding: var(--s3);
+  box-shadow: var(--sh-sm);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.benefit-item:hover {
+  transform: translateX(6px);
+  box-shadow: var(--sh-md);
+}
+
+.benefit-item:hover .brand-dot {
+  transform: scale(1.1);
+}
+
+.benefit-item h3 {
+  font-size: var(--h3);
+  margin-bottom: 4px;
+}
+
+.benefit-item p {
+  font-size: var(--t-base);
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   KONTAKT
+   ============================================================ */
+.kontakt {
+  background: var(--c-primary);
+  padding-block: var(--s10);
+}
+
+/* 2 sloupce: info vlevo, formulář vpravo */
+.kontakt__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s6);
+  align-items: stretch;
+}
+
+/* Levý sloupec – gradient karta */
+.kontakt__left {
+  background: linear-gradient(to right, var(--c-accent-deep) 0%, var(--c-accent) 100%);
+  border-radius: var(--r-xl);
+  padding: var(--s6);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Přebití gradient textu na bílý eyebrow uvnitř tmavé karty */
+.kontakt__left .section-label {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* section-label má globálně margin-bottom: var(--s2) – stejné jako jinde */
+.kontakt__left .section-title {
+  color: #fff;
+  margin-bottom: var(--s3);
+}
+
+.kontakt__perex {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Kontaktní čipy – hned pod textem, bez zbytečné mezery */
+.kontakt__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin-top: var(--s4);
+}
+
+.kontakt__contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: var(--r-lg);
+  padding: var(--s2) var(--s3);
+  text-decoration: none;
+  transition: background var(--tr), transform var(--tr);
+}
+
+.kontakt__contact-item:hover {
+  background: rgba(255, 255, 255, 0.20);
+  transform: translateX(4px);
+  text-decoration: none;
+}
+
+.kontakt__contact-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.20);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.kontakt__contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.kontakt__contact-label {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.kontakt__contact-value {
+  font-size: var(--t-base);
+  font-weight: 500;
+  color: #fff;
+}
+
+.kontakt__contact-note {
+  font-size: var(--t-sm);
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.kontakt__contact-value--email {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.kontakt__email-link {
+  color: #fff;
+  text-decoration: none;
+}
+.kontakt__email-link:hover { color: #fff; text-decoration: underline; }
+.copy-email-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 0;
+  font-size: 0.9rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: color var(--tr), transform var(--tr);
+}
+.copy-email-btn:hover { color: #fff; transform: scale(1.15); }
+.copy-email-btn.is-copied { color: #7ec87e; }
+
+.kontakt__social-section {
+  margin-top: var(--s6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.kontakt__social {
+  display: flex;
+  gap: var(--s3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.kontakt__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(1, 92, 99, 0.07);
+  border: 1.5px solid rgba(1, 92, 99, 0.25);
+  color: var(--c-accent);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background var(--tr), border-color var(--tr), transform 0.2s ease;
+}
+
+.kontakt__social a:hover {
+  background: rgba(1, 92, 99, 0.14);
+  border-color: rgba(1, 92, 99, 0.5);
+  transform: translateY(-3px);
+}
+
+.kontakt__legal {
+  font-size: var(--t-sm);
+  color: rgba(255, 255, 255, 0.55);
+  margin: var(--s3) 0 0;
+  line-height: 1.6;
+}
+
+/* Karta formuláře – pravý sloupec */
+.kontakt__form-card {
+  background: #fff;
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-lg);
+  padding: var(--s6);
+  display: flex;
+  flex-direction: column;
+}
+
+.kontakt__form-title {
+  font-size: var(--h2);
+  margin-bottom: var(--s4);
+}
+
+.kontakt__submit {
+  align-self: center;
+}
+
+/* Vstupy – teplé pozadí aby byly viditelné na bílé kartě */
+.kontakt__form-card .form-input {
+  background: #f8f6f3;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.kontakt__form-card .form-input:focus {
+  background: #fff;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--s3);
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.form-label span {
+  color: #c0392b;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--f-body);
+  font-size: var(--t-base);
+  color: var(--c-text);
+  background: #fff;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--r-sm);
+  transition: border-color var(--tr), box-shadow var(--tr);
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #aaa;
+}
+
+.form-input:focus {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px rgba(var(--c-accent-rgb), 0.12);
+}
+
+.form-input.is-error {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
+}
+
+.form-alert {
+  display: none;
+}
+
+.form-alert:not(:empty) {
+  display: block;
+  margin-bottom: var(--s2);
+  padding: 0.75rem 1rem;
+  border-radius: var(--r-sm);
+  background: rgba(192, 57, 43, 0.08);
+  border: 1px solid rgba(192, 57, 43, 0.3);
+  color: #c0392b;
+  font-size: var(--t-sm);
+  line-height: 1.5;
+}
+
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--s4) var(--s2);
+}
+
+.form-success i {
+  font-size: 3rem;
+  color: #5cb85c;
+  margin-bottom: var(--s2);
+}
+
+.form-success h3 {
+  font-family: var(--f-heading);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: var(--c-text);
+}
+
+.form-success p {
+  color: var(--c-muted);
+  max-width: 32ch;
+}
+
+.form-group--check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--s2);
+}
+
+.form-group--check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.form-group--check label {
+  font-size: var(--t-sm);
+  color: var(--c-muted);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.form-note {
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  text-align: center;
+  margin: 0;
+}
+
+/* ============================================================
+   PATIČKA
+   ============================================================ */
+.site-footer {
+  background: #01373b;
+  padding-block: var(--s2);
+}
+
+.footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  font-size: var(--t-sm);
+  color: rgba(255, 255, 255, 0.70);
+  margin: 0;
+}
+
+.footer-link {
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer-link:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+.footer-partners-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.footer-partners-label {
+  font-size: var(--t-sm);
+  color: rgba(255, 255, 255, 0.70);
+  white-space: nowrap;
+}
+
+.footer-partners {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-partners a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  opacity: 0.80;
+  transition: opacity var(--tr), transform 0.15s;
+}
+
+.footer-partners a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.footer-partners img {
+  height: 20px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-partners span {
+  display: none;
+}
+
+.footer-partners li:first-child img {
+  height: 30px;
+  margin-top: 14px;
+}
+
+.footer-partners li:last-child img {
+  height: 26px;
+  margin-top: -1px;
+}
+
+.footer-partners {
+  gap: var(--s4);
+}
+
+/* Statický chip v kontaktu (adresa) */
+.kontakt__contact-item--static {
+  cursor: default;
+  align-items: flex-start;
+}
+
+.kontakt__contact-item--static:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: none;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   PORTFOLIO PAGE – portfolio.html
+   ============================================================ */
+.portfolio-page {
+  padding-top: calc(var(--nav-h) + var(--s12));
+}
+
+/* ============================================================
+   DĚKUJI PAGE – dekuji.html
+   ============================================================ */
+.dekuji-page {
+  padding-top: calc(var(--nav-h) + var(--s10));
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.dekuji-page__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s6);
+  align-items: center;
+}
+
+.dekuji-page__photo img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  display: block;
+  margin-inline: auto;
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+}
+
+.dekuji-page__content {
+  text-align: center;
+}
+
+.dekuji-page__content .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-inline: auto;
+}
+
+.dekuji-page__content .section-label i {
+  color: #5cb85c;
+}
+
+.dekuji-page__text {
+  color: var(--c-muted);
+  font-size: var(--t-lg);
+  line-height: 1.7;
+  margin-top: var(--s2);
+  margin-bottom: var(--s4);
+}
+
+.dekuji-page__ctas {
+  display: flex;
+  justify-content: center;
+  gap: var(--s2);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 769px) {
+  .dekuji-page__grid {
+    grid-template-columns: 0.85fr 1fr;
+    gap: var(--s8);
+  }
+
+  .dekuji-page__photo img {
+    max-width: 100%;
+  }
+
+  .dekuji-page__content,
+  .dekuji-page__content .section-label,
+  .dekuji-page__ctas {
+    text-align: left;
+    justify-content: flex-start;
+    margin-inline: 0;
+  }
+}
+
+
+/* Mockup placeholder – pro weby bez screenshotu */
+.portfolio-mockup--placeholder .portfolio-mockup-placeholder-img {
+  width: 100%;
+  min-height: 320px;
+  background: linear-gradient(135deg, rgba(1, 92, 99, 0.05) 0%, rgba(253, 233, 227, 0.50) 100%);
+  border-radius: var(--r-md);
+  border: 2px dashed rgba(1, 92, 99, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  color: rgba(1, 92, 99, 0.35);
+}
+
+.portfolio-mockup--placeholder .portfolio-mockup-placeholder-img i {
+  font-size: 2.5rem;
+}
+
+.portfolio-mockup--placeholder .portfolio-mockup-placeholder-img span {
+  font-family: var(--f-body);
+  font-size: var(--t-ui);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   LANDING PAGES – animace
+   ============================================================ */
+
+@keyframes lp-f1 {
+  0%, 100% { transform: rotate(3deg) translateX(6px) translateY(0); }
+  50%       { transform: rotate(3deg) translateX(6px) translateY(-10px); }
+}
+@keyframes lp-f2 {
+  0%, 100% { transform: rotate(-2.5deg) translateX(-8px) translateY(0); }
+  50%       { transform: rotate(-2.5deg) translateX(-8px) translateY(-9px); }
+}
+@keyframes lp-f3 {
+  0%, 100% { transform: rotate(5deg) translateX(3px) translateY(0); }
+  50%       { transform: rotate(5deg) translateX(3px) translateY(-8px); }
+}
+@keyframes lp-f4 {
+  0%, 100% { transform: rotate(-4deg) translateX(-6px) translateY(0); }
+  50%       { transform: rotate(-4deg) translateX(-6px) translateY(-11px); }
+}
+@keyframes lp-f5 {
+  0%, 100% { transform: rotate(2deg) translateX(8px) translateY(0); }
+  50%       { transform: rotate(2deg) translateX(8px) translateY(-8px); }
+}
+@keyframes lp-f6 {
+  0%, 100% { transform: rotate(-3deg) translateX(-3px) translateY(0); }
+  50%       { transform: rotate(-3deg) translateX(-3px) translateY(-7px); }
+}
+
+/* ============================================================
+   LANDING PAGES – společné styly
+   ============================================================ */
+
+/* Centrované eyebrows a nadpisy LP sekcí */
+.lp-professions .section-label,
+.lp-empathy .section-label,
+.lp-benefits .section-label,
+.lp-steps .section-label,
+.lp-faq .section-label {
+  margin-inline: auto;
+}
+
+.lp-professions .section-title,
+.lp-empathy .section-title,
+.lp-benefits .section-title,
+.lp-steps .section-title,
+.lp-faq .section-title {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.lp-faq .accordion-item {
+  background: var(--c-primary);
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+.lp-faq .accordion-trigger:hover {
+  background: var(--c-primary);
+}
+
+/* HERO */
+.lp-hero {
+  padding-top: calc(var(--nav-h) + var(--s8));
+  padding-bottom: var(--s8);
+  background: var(--c-primary);
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.lp-hero > .container {
+  width: 100%;
+}
+
+.lp-hero .section-label {
+  display: inline-block;
+}
+
+.lp-hero__body {
+  display: grid;
+  grid-template-columns: 1fr 2.6fr 1fr;
+  gap: var(--s4);
+  align-items: stretch;
+  height: calc(100svh - var(--nav-h) - var(--s8) * 2);
+}
+
+.lp-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.lp-hero__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.lp-hero__content .section-label {
+  width: auto;
+  margin-bottom: var(--s3);
+}
+
+.lp-hero__h1 {
+  font-family: var(--f-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.9rem);
+  line-height: 1.2;
+  margin: 0 0 var(--s4);
+}
+
+.lp-hero__sub {
+  font-size: var(--t-lg);
+  color: var(--c-muted);
+  margin: 0 0 var(--s6);
+  line-height: 1.75;
+  text-align: center;
+}
+
+.lp-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  justify-content: center;
+  margin: 0 0 var(--s5);
+}
+
+.lp-hero__tag {
+  font-size: var(--t-sm);
+  color: var(--c-muted);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 2rem;
+  padding: 0.2rem 0.8rem;
+  white-space: nowrap;
+}
+
+.lp-hero__ctas {
+  display: flex;
+  gap: var(--s2);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--s5);
+}
+
+.lp-hero__author {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  justify-content: center;
+  margin-top: auto;
+  padding-bottom: var(--s4);
+}
+
+.lp-hero__author-avatar {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+  flex-shrink: 0;
+}
+
+.lp-hero__author-text {
+  font-size: var(--t-base);
+  color: var(--c-muted);
+}
+
+/* HERO – 3 fotky vlevo / text / 3 fotky vpravo */
+.lp-hero__images {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--s5);
+  padding-top: var(--s2);
+  padding-bottom: 0;
+}
+
+/* Levá kolona: fotky na středu sloupce */
+.lp-hero__images--left {
+  align-items: center;
+  padding-right: 0;
+}
+
+/* Pravá kolona: fotky na středu sloupce */
+.lp-hero__images--right {
+  align-items: center;
+  padding-left: 0;
+}
+
+.lp-hero__img {
+  width: 58%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+  background: var(--c-secondary);
+}
+
+.lp-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Levá kolona – všechny poletují */
+.lp-hero__img--1 { animation: lp-f1 5s   ease-in-out infinite; }
+.lp-hero__img--2 { animation: lp-f2 5.5s ease-in-out infinite; }
+.lp-hero__img--3 { animation: lp-f3 7s   ease-in-out infinite; }
+
+/* Pravá kolona – všechny poletují */
+.lp-hero__img--4 { animation: lp-f4 6s   ease-in-out infinite; }
+.lp-hero__img--5 { animation: lp-f5 6.5s ease-in-out infinite; }
+.lp-hero__img--6 { animation: lp-f6 4.5s ease-in-out infinite; }
+
+/* Vypnutí animací pro lidi citlivé na pohyb */
+@media (prefers-reduced-motion: reduce) {
+  .lp-hero__img--1 { animation: none; transform: rotate(-3deg) translateX(-6px); }
+  .lp-hero__img--2 { animation: none; transform: rotate(2.5deg) translateX(8px); }
+  .lp-hero__img--3 { animation: none; transform: rotate(-5deg) translateX(-3px); }
+  .lp-hero__img--4 { animation: none; transform: rotate(4deg)  translateX(6px); }
+  .lp-hero__img--5 { animation: none; transform: rotate(-2deg) translateX(-8px); }
+  .lp-hero__img--6 { animation: none; transform: rotate(3deg)  translateX(3px); }
+}
+
+/* PROFESSIONS TAGS */
+.lp-professions {
+  background: var(--c-white);
+}
+
+.lp-professions__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  justify-content: center;
+  margin-top: var(--s6);
+}
+
+.lp-profession-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--t-base);
+  font-weight: 500;
+  color: var(--c-accent-deep);
+  background: rgba(1, 92, 99, 0.1);
+  border: 1px solid rgba(1, 92, 99, 0.2);
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  box-shadow: var(--sh-sm);
+}
+
+.lp-profession-tag i {
+  color: var(--c-accent);
+  font-size: 1em;
+  transition: transform var(--tr);
+}
+
+.lp-profession-tag:hover i {
+  transform: scale(1.3);
+}
+
+/* EMPATHY */
+
+.lp-empathy {
+  background: var(--c-white);
+  padding-top: var(--s6);
+}
+
+.lp-empathy__layout {
+  display: grid;
+  grid-template-columns: 0.7fr 1.2fr;
+  gap: var(--s4);
+  align-items: stretch;
+}
+
+.lp-empathy__photo {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 48px rgba(1, 92, 99, 0.10);
+}
+
+.lp-empathy__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 20% center;
+  display: block;
+}
+
+.lp-empathy__content {
+  padding: var(--s6) 2.75rem;
+  background: rgba(240, 237, 232, 0.60);
+  border: 1px solid rgba(210, 205, 195, 0.60);
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 48px rgba(1, 92, 99, 0.10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lp-empathy__content .section-title {
+  text-align: left;
+  margin-inline: 0;
+  margin-bottom: var(--s5);
+}
+
+.lp-empathy__body {
+  font-size: var(--t-base);
+  line-height: 1.85;
+  color: var(--c-text);
+}
+
+.lp-empathy__body p + p {
+  margin-top: var(--s3);
+}
+
+/* BENEFITS */
+
+.lp-benefits {
+  background: var(--c-primary);
+}
+
+.lp-benefits .benefit-item {
+  background: var(--c-white);
+}
+
+.lp-benefits .benefit-item:hover {
+  transform: none;
+  box-shadow: var(--sh-sm);
+}
+
+.lp-benefits__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+  margin-top: var(--s8);
+}
+
+/* STEPS */
+.lp-steps {
+  background: var(--c-primary);
+}
+
+.lp-steps .section-title {
+  margin-bottom: var(--s2);
+}
+
+.lp-steps__sub {
+  text-align: center;
+  font-size: var(--t-base);
+  color: var(--c-muted);
+  margin-top: var(--s2);
+}
+
+.lp-steps__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--s10);
+  position: relative;
+}
+
+.lp-steps__grid::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 1px;
+  background: var(--c-border);
+  z-index: 0;
+}
+
+.lp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--s5);
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.lp-step__bubble {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--g-accent);
+  border: none;
+  margin-bottom: var(--s5);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 16px rgba(1, 92, 99, 0.25);
+  transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.lp-step__bubble span {
+  font-family: var(--f-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--c-white);
+  line-height: 1;
+}
+
+.lp-step:hover .lp-step__bubble {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-md);
+}
+
+.lp-step__title {
+  font-family: var(--f-heading);
+  font-size: var(--h3);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--c-text);
+  margin-bottom: var(--s2);
+  text-align: center;
+}
+
+.lp-step__text {
+  font-size: var(--t-base);
+  color: var(--c-muted);
+  line-height: 1.65;
+  text-align: center;
+}
+
+/* PRICING */
+.lp-pricing {
+  background: var(--c-primary);
+}
+
+.lp-pricing__card {
+  background: var(--g-accent);
+  border-radius: var(--r-lg);
+  padding: var(--s10) var(--s8);
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  box-shadow: 0 12px 48px rgba(1, 55, 59, 0.2);
+}
+
+.lp-pricing__label {
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin-inline: auto;
+  margin-bottom: var(--s3);
+}
+
+.lp-pricing__title {
+  font-family: var(--f-heading);
+  font-size: var(--h2);
+  color: var(--c-white);
+  margin-bottom: 0;
+}
+
+.lp-pricing__title strong {
+  color: var(--c-white);
+}
+
+.lp-pricing__divider {
+  width: 3rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: var(--s5) auto;
+}
+
+.lp-pricing__price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: var(--s4);
+}
+
+.lp-pricing__from {
+  font-size: var(--t-lg);
+  color: var(--c-white);
+}
+
+.lp-pricing__amount {
+  font-family: var(--f-heading);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--c-white);
+  line-height: 1;
+}
+
+.lp-pricing__text {
+  color: var(--c-white);
+  font-size: var(--t-base);
+  max-width: 480px;
+  margin: 0 auto var(--s6);
+  line-height: 1.75;
+  text-align: center;
+}
+
+.lp-pricing__btn {
+  background: transparent;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: var(--c-white);
+  color: var(--c-white);
+  border-color: var(--c-white);
+  margin-top: var(--s2);
+}
+
+.lp-pricing__btn:hover {
+  background: var(--c-white);
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: var(--c-accent);
+  color: var(--c-accent);
+  border-color: var(--c-white);
+}
+
+/* ABOUT */
+.lp-about {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  background-image: url('Obrazky/harmonicky-web-5.jpg');
+  background-size: cover;
+  background-position: 65% center;
+  background-attachment: fixed;
+}
+
+.lp-about__overlay {
+  position: relative;
+  z-index: 1;
+  width: 75%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-block: var(--s12);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.lp-about__glass {
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--r-xl);
+  padding: var(--s6) 2.75rem;
+  box-shadow: var(--sh-md);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.lp-about__glass .section-title {
+  text-align: left;
+  margin-inline: 0;
+  margin-bottom: var(--s5);
+  white-space: nowrap;
+  font-size: 2.1rem;
+}
+
+.lp-about__glass p:not(.section-label):not(.lp-profession-tag) {
+  font-size: var(--t-base);
+  line-height: 1.85;
+  color: #333333;
+}
+
+.lp-about__glass p + p {
+  margin-top: var(--s3);
+}
+
+.lp-about__badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--s3);
+  overflow: visible;
+  padding-top: 0.5rem;
+}
+
+.lp-about__logo {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(52%) saturate(987%) hue-rotate(155deg) brightness(89%);
+}
+
+.lp-about__signature {
+  display: inline-block;
+  font-family: 'Gistesy', cursive;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #01373b 0%, #015c63 55%, #0a8a94 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  transform: rotate(-7deg) translateY(-0.75rem) translateX(-1.5rem);
+  transform-origin: right bottom;
+  opacity: 0;
+  padding-top: 0.4rem;
+}
+
+.lp-about__signature.is-visible {
+  animation: signature-write 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes signature-write {
+  from { opacity: 1; clip-path: inset(0 100% 0 0); }
+  to   { opacity: 1; clip-path: inset(0 0% 0 0); }
+}
+
+
+.lp-portfolio {
+  background: var(--c-white);
+}
+
+/* ============================================================
+   RESPONZIVNÍ
+   ============================================================ */
+
+/* --- TABLET 1024px --- */
+@media (max-width: 1024px) {
+  :root {
+    --nav-h: 64px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+    margin-inline: auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s5);
+  }
+
+  .footer-col--brand {
+    grid-column: 1 / -1;
+  }
+
+  /* Reference – 2 sloupce na tabletu */
+  .refs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* LP – tablet: text nahoře, fotky jako vodorovné pruhy pod ním */
+  .lp-hero__body {
+    grid-template-columns: 1fr;
+    align-items: start;
+    height: auto;
+    gap: var(--s5);
+  }
+
+  .lp-hero__images--left  { order: 2; flex-direction: row; justify-content: center; padding: 0; gap: var(--s2); }
+  .lp-hero__content       { order: 1; }
+  .lp-hero__images--right { order: 3; flex-direction: row; justify-content: center; padding: 0; gap: var(--s2); }
+
+  .lp-hero__img {
+    width: calc((100% - var(--s2) * 2) / 3);
+    transform: none;
+    animation: none;
+  }
+
+  .lp-steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-benefits__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-about__overlay {
+    width: 90%;
+  }
+}
+
+/* --- TABLET/MOBIL 768px --- */
+@media (max-width: 768px) {
+
+  /* Hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: rgba(240, 237, 232, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--s3);
+    gap: 4px;
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    border-bottom: 1px solid var(--c-border);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-menu.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-link {
+    padding: var(--s2) var(--s3);
+    border-radius: var(--r-sm);
+  }
+
+  .nav-link--cta {
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  /* Sections */
+  .section {
+    padding-block: var(--s8);
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .hero__content {
+    width: 90%;
+  }
+
+  /* Hero karta */
+  .hero__card {
+    max-width: 100%;
+    padding: var(--s5) var(--s4);
+    border-radius: var(--r-lg);
+  }
+
+  /* O mně */
+  .o-mne__orbital {
+    grid-template-columns: 1fr;
+    gap: var(--s3);
+  }
+
+  .o-mne__orbital-col--left {
+    order: 2;
+    text-align: left;
+  }
+
+  .o-mne__orbital-center {
+    order: 1;
+  }
+
+  .o-mne__orbital-col--right {
+    order: 3;
+  }
+
+  .o-mne__orbital-col {
+    justify-content: flex-start;
+  }
+
+  /* Accordion – 1 sloupec */
+  .accordion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Ceník */
+  .cenik-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Portfolio */
+  .portfolio-card {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-card:nth-child(even) .portfolio-mockup {
+    order: 0;
+  }
+
+  .portfolio-card:nth-child(even) .portfolio-info {
+    order: 0;
+  }
+
+  /* Reference grid */
+  .refs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Benefity */
+  .benefity__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+  }
+
+  .benefity__image {
+    order: -1;
+  }
+
+  .benefity__image img {
+    aspect-ratio: 3/2;
+  }
+
+  /* Kontakt */
+  .kontakt__body {
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+  }
+
+  /* LP – mobil */
+  .lp-hero__images {
+    gap: var(--s1);
+  }
+
+  .lp-about__glass {
+    max-width: 100%;
+    padding: var(--s5) var(--s4);
+  }
+
+  .lp-professions__tags {
+    gap: var(--s1);
+  }
+}
+
+/* --- MOBIL 480px --- */
+@media (max-width: 480px) {
+  .hero__cta {
+    flex-direction: column;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--s5);
+  }
+
+}
+
+/* --- 4K --- */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1440px;
+  }
+}

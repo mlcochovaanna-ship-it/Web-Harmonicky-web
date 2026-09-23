@@ -1,0 +1,71 @@
+# ============================================================
+# Harmonický web – .htaccess
+# ============================================================
+
+# --- Přesměrování www na bez www (kanonická doména) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.harmonickyweb\.cz [NC]
+  RewriteRule ^(.*)$ https://harmonickyweb.cz/$1 [L,R=301]
+</IfModule>
+
+# --- Čisté URL (bez .html) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 301: /index.html -> /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^ /? [R=301,L]
+
+  # 301: /stranka.html -> /stranka (staré odkazy/záložky)
+  RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # Interní přepis: /stranka -> stranka.html (neviditelně, beze změny URL)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^([^.]+)$ $1.html [L]
+</IfModule>
+
+# --- Chybová stránka ---
+ErrorDocument 404 /404.html
+
+# --- Bezpečnostní HTTP hlavičky ---
+<IfModule mod_headers.c>
+  # Zamezení načítání webu ve framech (clickjacking)
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Ochrana před MIME-type sniffingem
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Referrer policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+  # Content Security Policy – upravit podle potřeby
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io;"
+</IfModule>
+
+# --- Komprese ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml
+</IfModule>
+
+# --- Cachování statických souborů ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg       "access plus 1 year"
+  ExpiresByType image/png        "access plus 1 year"
+  ExpiresByType image/webp       "access plus 1 year"
+  ExpiresByType image/avif       "access plus 1 year"
+  ExpiresByType image/svg+xml    "access plus 1 year"
+  ExpiresByType text/css         "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html        "access plus 1 day"
+</IfModule>
+
+# --- Charset ---
+AddDefaultCharset UTF-8

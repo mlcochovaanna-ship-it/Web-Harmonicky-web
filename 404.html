@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stránka nenalezena | Harmonický web</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="Obrazky/logo-male.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .error-page {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f0ede8 0%, #fde9e3 100%);
+    }
+    .error-page__inner {
+      max-width: 520px;
+    }
+    .error-page__icon {
+      font-size: 5rem;
+      color: #015c63;
+      margin-bottom: 1.5rem;
+      opacity: 0.6;
+    }
+    .error-page__title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .error-page__text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .error-page .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      background-color: #015c63;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    .error-page .btn:hover {
+      background-color: #014a50;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="error-page__inner">
+      <div class="error-page__icon" aria-hidden="true">
+        <i class="fa-regular fa-face-frown"></i>
+      </div>
+      <h1 class="error-page__title">Tahle stránka neexistuje</h1>
+      <p class="error-page__text">Stránka, kterou hledáte, bohužel neexistuje nebo byla přesunuta. Vraťte se na úvodní stránku a&nbsp;pokračujte dál.</p>
+      <a href="/" class="btn">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        Zpět na úvod
+      </a>
+    </div>
+  </div>
+</body>
+</html>
