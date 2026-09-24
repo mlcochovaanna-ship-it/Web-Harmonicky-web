@@ -426,23 +426,30 @@ h4 {
   text-decoration: none;
 }
 
-.nav-logo img {
-  height: 56px;
-  width: auto;
+.nav-logo__mark {
+  display: block;
+  height: 64px;
+  aspect-ratio: 3 / 1;
+  background: var(--g-accent);
+  -webkit-mask: url('Obrazky/logo-hlavicka.png') center / contain no-repeat;
+  mask: url('Obrazky/logo-hlavicka.png') center / contain no-repeat;
+  transition: height var(--tr);
 }
 
-.nav-logo__text {
-  font-family: var(--f-body);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--c-accent);
-  background: var(--g-accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.site-header.scrolled .nav-logo__mark {
+  height: 52px;
 }
+
+@media (min-width: 769px) {
+  .nav-logo__mark {
+    height: 96px;
+  }
+
+  .site-header.scrolled .nav-logo__mark {
+    height: 72px;
+  }
+}
+
 
 .nav-menu {
   display: flex;
@@ -2941,10 +2948,9 @@ h4 {
 }
 
 .lp-about__logo {
-  width: 95px;
-  height: 95px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(27%) sepia(52%) saturate(987%) hue-rotate(155deg) brightness(89%);
 }
 
 .lp-about__signature {
