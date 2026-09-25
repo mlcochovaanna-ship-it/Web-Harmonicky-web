@@ -403,6 +403,13 @@ h4 {
 
 .navbar {
   height: var(--nav-h);
+  transition: height var(--tr);
+}
+
+@media (min-width: 769px) {
+  .site-header:not(.scrolled) .navbar {
+    height: calc(var(--nav-h) + 14px);
+  }
 }
 
 .nav-container {
@@ -429,10 +436,7 @@ h4 {
 .nav-logo__mark {
   display: block;
   height: 64px;
-  aspect-ratio: 3 / 1;
-  background: var(--g-accent);
-  -webkit-mask: url('Obrazky/logo-hlavicka.png') center / contain no-repeat;
-  mask: url('Obrazky/logo-hlavicka.png') center / contain no-repeat;
+  width: auto;
   transition: height var(--tr);
 }
 
