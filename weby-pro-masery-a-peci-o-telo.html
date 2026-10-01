@@ -44,7 +44,9 @@
     .site-header { position: relative; background: var(--c-primary); }
     .site-header .navbar { height: var(--nav-h); }
     .lp-hero { padding-top: var(--s8) !important; min-height: calc(100svh - var(--nav-h)) !important; }
-    .lp-hero__body { height: calc(100svh - var(--nav-h) - var(--s8) * 2); }
+    @media (min-width: 1025px) {
+      .lp-hero__body { height: calc(100svh - var(--nav-h) - var(--s8) * 2); }
+    }
     /* Spolupráce + Ceník – bílé pozadí */
     .lp-steps { background: var(--c-white); }
     .lp-pricing { background: var(--c-white); }
@@ -798,7 +800,7 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-bar">
-        <p class="footer-copy">Copyright &copy; 2026 Anna Mlčochová. Všechna práva vyhrazena. Webdesign <a href="https://harmonickyweb.cz" target="_blank" rel="noopener noreferrer" class="footer-link">harmonickyweb.cz</a></p>
+        <p class="footer-copy">Copyright &copy; 2026 Anna Mlčochová. Všechna práva vyhrazena.<br>Webdesign <a href="https://harmonickyweb.cz" target="_blank" rel="noopener noreferrer" class="footer-link">harmonickyweb.cz</a></p>
       </div>
     </div>
   </footer>

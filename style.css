@@ -395,10 +395,23 @@ h4 {
 }
 
 .site-header.scrolled {
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   box-shadow: var(--sh-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+/* Když je vysouvací menu otevřené, nesmí mít hlavička svůj vlastní blur zároveň
+   s blurem menu – vnořený backdrop-filter uvnitř jiného backdrop-filter prvku
+   se v Chrome nevykreslí. Menu teď při otevření sahá až nahoru (viz .nav-menu.is-open)
+   a lištu podkládá vlastním blurem, takže lišta svůj blur v tuhle chvíli nepotřebuje. */
+.site-header.scrolled:has(.nav-menu.is-open) {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  border-bottom-color: transparent;
 }
 
 .navbar {
@@ -423,6 +436,8 @@ h4 {
 }
 
 .nav-logo {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -502,6 +517,8 @@ h4 {
 
 /* Hamburger */
 .hamburger {
+  position: relative;
+  z-index: 2;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -900,11 +917,13 @@ h4 {
 }
 
 .accordion-item {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: var(--r-md);
+  /* světle zelený nádech (stejný jako na landing page u FAQ) – ne růžová,
+     ať se barvy karet v sekcích střídají (ceník hned nad FAQ je růžový) */
+  background: rgba(1, 92, 99, 0.08);
+  border: 1px solid rgba(1, 92, 99, 0.18);
+  border-radius: var(--r-xl);
   overflow: hidden;
-  box-shadow: none;
+  box-shadow: var(--sh-sm);
 }
 
 .accordion-trigger {
@@ -913,7 +932,7 @@ h4 {
   justify-content: space-between;
   gap: var(--s2);
   width: 100%;
-  padding: var(--s3) var(--s4);
+  padding: var(--s2) var(--s4);
   background: none;
   border: none;
   cursor: pointer;
@@ -922,7 +941,7 @@ h4 {
 }
 
 .accordion-trigger:hover {
-  background: #ffffff;
+  background: rgba(1, 92, 99, 0.12);
 }
 
 .accordion-title {
@@ -960,7 +979,7 @@ h4 {
 }
 
 .accordion-content {
-  padding: 0 var(--s4) var(--s4);
+  padding: var(--s3) var(--s4) var(--s4);
   font-size: var(--t-base);
   line-height: 1.65;
 }
@@ -1292,21 +1311,8 @@ h4 {
   align-items: start;
 }
 
-.faq .accordion-item {
-  background: var(--c-primary);
-  border: none;
-}
-
-.faq .accordion-item.is-open {
-  background: var(--c-primary);
-}
-
 .faq .accordion-icon {
   color: var(--c-accent);
-}
-
-.faq .accordion-trigger:hover {
-  background: var(--c-primary);
 }
 
 .faq .fact-list {
@@ -1763,13 +1769,18 @@ h4 {
   transform: scale(1.1);
 }
 
-/* Zvýrazněné klíčové fráze v kartách – tmavší a tučnější než okolní text */
-.benefit-item p strong,
+/* Zvýrazněné klíčové fráze v kartách – tučnější než okolní text */
 .cenik-desc strong,
 .accordion-item--sm p strong,
 .lp-step__text strong {
   font-weight: 600;
   color: var(--c-text);
+}
+
+/* Odstavec je šedý (--c-muted), zvýraznění má být stejné barvy jako on, ne tmavší */
+.benefit-item p strong {
+  font-weight: 600;
+  color: inherit;
 }
 
 .benefit-item h3 {
@@ -3051,9 +3062,28 @@ h4 {
 /* --- TABLET/MOBIL 768px --- */
 @media (max-width: 768px) {
 
-  /* Mobil – základní text o stupeň menší (16 → 15 px), nadpisy beze změny */
+  /* Mobil – základní text o stupeň menší (16 → 15 px), nadpisy naopak zvětšené */
   :root {
     --t-base: 0.9375rem;
+    --h2: 1.85rem;
+    --h3: 1.3rem;
+    --h4: 1.05rem;
+    --hero-h2: 2.5rem;
+  }
+
+  /* Menší mezera pod nadpisy sekcí (byla 4rem/64px všude stejná) */
+  .section-title {
+    margin-bottom: var(--s6);
+  }
+
+  /* Mezera nad kartou "Zůstávám po vašem boku..." stejná jako mezi kroky nad ní */
+  .steps-grid {
+    margin-bottom: var(--s4);
+  }
+
+  /* LP hero – text běžel od kraje ke kraji, chybělo boční odsazení jako u .container */
+  .lp-hero__content {
+    padding-inline: 5%;
   }
 
   /* Hamburger */
@@ -3063,36 +3093,58 @@ h4 {
 
   .nav-menu {
     position: fixed;
-    top: var(--nav-h);
+    /* posun přes "top", ne transform – backdrop-filter blur se na mobilech
+       s animovaným transformem na stejném prvku často vůbec nevykreslí */
+    top: -100%;
     left: 0;
     right: 0;
-    background: rgba(240, 237, 232, 0.98);
-    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     flex-direction: column;
     align-items: stretch;
-    padding: var(--s3);
-    gap: 4px;
-    transform: translateY(-110%);
+    /* nahoře místo navíc pro lištu s logem – menu ji po otevření podkládá vlastním
+       blurem (viz .nav-menu.is-open níže), aby nešlo o dva vnořené blury zároveň */
+    padding: calc(var(--nav-h) + var(--s3)) var(--s3) var(--s3);
+    gap: 0;
     opacity: 0;
     pointer-events: none;
-    border-bottom: 1px solid var(--c-border);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: var(--sh-md);
+    transition: top 0.3s ease, opacity 0.3s ease;
   }
 
   .nav-menu.is-open {
-    transform: translateY(0);
+    top: 0;
     opacity: 1;
     pointer-events: all;
   }
 
   .nav-link {
+    display: block;
     padding: var(--s2) var(--s3);
     border-radius: var(--r-sm);
+    border-bottom: 1px solid var(--c-border);
   }
 
-  .nav-link--cta {
-    text-align: center;
-    margin-top: 4px;
+  /* Kontakt zůstává úplně stejné tlačítko jako jinde na webu (.btn) – ne na celou
+     šířku, zarovnané doleva jako ostatní položky. .nav-link mu ale přebíjí
+     border-radius na var(--r-sm), proto ho tu vracíme zpět na 99px z .btn. */
+  .nav-menu .nav-link--cta {
+    display: inline-flex;
+    border-radius: 99px;
+    padding: 0.75rem 2rem;
+    border-bottom: none;
+    margin-top: var(--s2);
+  }
+
+  /* Landing page – tlačítko je přímo v liště (bez rozbalovacího menu),
+     proto potřebuje menší, na výšku lišty vystředěné rozměry. */
+  .nav-container > .nav-link--cta {
+    display: inline-flex;
+    border-radius: 99px;
+    padding: 0.6rem 1.25rem;
+    border-bottom: none;
   }
 
   /* Sections */
@@ -3100,12 +3152,28 @@ h4 {
     padding-block: var(--s8);
   }
 
+  /* Portfolio – vrací mezeru nad "Portfolio" eyebrow, kterou tu výše smazalo
+     .section (stejná specificita, ale později v souboru) */
+  .portfolio-page {
+    padding-top: calc(var(--nav-h) + var(--s5));
+  }
+
   .container {
     width: 90%;
   }
 
+  /* Karta dolů, aby fotka (obličej) nahoře zůstala volná */
+  .hero {
+    align-items: flex-end;
+  }
+
+  .hero__bg img {
+    object-position: 74% top;
+  }
+
   .hero__content {
     width: 90%;
+    padding-block: 0 var(--s6);
   }
 
   /* Hero karta */
@@ -3124,6 +3192,8 @@ h4 {
   .o-mne__orbital-col--left {
     order: 2;
     text-align: left;
+    /* větší odstup od fotky nad tímto blokem, než jaký mají body mezi sebou */
+    margin-top: var(--s2);
   }
 
   .o-mne__orbital-center {
@@ -3187,9 +3257,14 @@ h4 {
   }
 
   /* Portfolio */
+  .portfolio-grid {
+    gap: var(--s10);
+  }
+
   .portfolio-card,
   .portfolio-card:nth-child(even) {
     grid-template-columns: minmax(0, 1fr);
+    gap: var(--s2);
   }
 
   .portfolio-card:nth-child(even) .portfolio-mockup {
@@ -3236,6 +3311,19 @@ h4 {
 
   .cenik-price {
     font-size: 1.75rem;
+    /* na desktopu má cena navíc 4px nahoře/dole – na mobilu ať jsou
+       všechny rozestupy v kartě stejné jako .cenik-card gap níže */
+    margin: 0;
+  }
+
+  /* Menší a sjednocené rozestupy mezi prvky v kartě (ikona/název/podnadpis/
+     cena/text/akordeon) – dřív ikona měla dvojnásobnou mezeru a cena taky víc */
+  .cenik-card {
+    gap: 0.75rem;
+  }
+
+  .brand-dot--lg {
+    margin-bottom: 0;
   }
 
   .benefity__footer {
@@ -3275,11 +3363,11 @@ h4 {
 
   .lp-about__overlay {
     grid-template-columns: minmax(0, 1fr);
+    padding-block: var(--s6);
   }
 
   .lp-about__glass .section-title {
     white-space: normal;
-    font-size: 1.7rem;
   }
 
   .lp-about__badge {
@@ -3293,6 +3381,16 @@ h4 {
 
   .feature-card {
     padding: var(--s4);
+  }
+
+  .feature-card__icon-wrap {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feature-card__icon {
+    width: 28px;
+    height: 28px;
   }
 
   .kontakt__body {
@@ -3400,6 +3498,33 @@ h4 {
 
   .lp-professions__tags {
     gap: var(--s1);
+  }
+
+  /* Znám váš svět – menší odstup fotky od tagů profesí nad ní */
+  .lp-empathy {
+    padding-top: var(--s3);
+  }
+
+  /* Odstup nadpisu od obsahu pod ním – stejně jako všude jinde na webu (48px) */
+  .lp-benefits__grid {
+    margin-top: var(--s6);
+  }
+
+  .lp-steps__grid {
+    margin-top: var(--s6);
+  }
+
+  /* Znám váš svět – foto + text vedle sebe se na mobilu nezvládlo přeskládat pod sebe */
+  .lp-empathy__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-empathy__photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  .lp-empathy__content {
+    padding: var(--s5) var(--s4);
   }
 }
 
