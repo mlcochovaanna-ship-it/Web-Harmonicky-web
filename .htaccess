@@ -9,6 +9,15 @@
   RewriteRule ^(.*)$ https://harmonickyweb.cz/$1 [L,R=301]
 </IfModule>
 
+# --- Přesměrování ze starého WP webu (redesign 2026) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteRule ^testtest/$ / [R=301,L]
+  RewriteRule ^webove-stranky-pro-sluzby-pece-o-telo/$ /weby-pro-masery-a-peci-o-telo [R=301,L]
+  RewriteRule ^portfolio/$ /portfolio [R=301,L]
+</IfModule>
+
 # --- Čisté URL (bez .html) ---
 <IfModule mod_rewrite.c>
   RewriteEngine On

@@ -667,10 +667,61 @@ h4 {
   margin-inline: auto;
 }
 
-.feature-grid {
+.jaky-web__layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.4fr 1fr;
   gap: var(--s4);
+  align-items: stretch;
+}
+
+.jaky-web__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.jaky-web__statement {
+  position: relative;
+  overflow: hidden;
+  background: var(--g-accent);
+  border-radius: var(--r-xl);
+  padding: var(--s6) var(--s5);
+  box-shadow: var(--sh-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.jaky-web__statement-mark {
+  position: absolute;
+  bottom: -15%;
+  right: -15%;
+  width: 60%;
+  height: auto;
+  opacity: 0.12;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+}
+
+.jaky-web__statement-lead {
+  position: relative;
+  font-family: var(--f-heading);
+  font-size: var(--h3);
+  font-weight: 600;
+  color: var(--c-white);
+  margin-bottom: var(--s3);
+}
+
+.jaky-web__statement-words {
+  position: relative;
+  font-family: var(--f-body);
+  font-size: var(--t-lg);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-white);
+  line-height: 1.7;
+  margin: 0;
 }
 
 .feature-card {
@@ -703,8 +754,8 @@ h4 {
 }
 
 .feature-card__icon {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
@@ -1242,7 +1293,7 @@ h4 {
 }
 
 .cenik-name {
-  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
   margin: 0;
 }
 
@@ -1259,6 +1310,7 @@ h4 {
   font-family: var(--f-heading);
   font-size: clamp(1.2rem, 1.8vw, 1.55rem);
   font-weight: 700;
+  line-height: 1.2;
   color: var(--c-accent);
   /* fallback */
   background: var(--g-accent);
@@ -1266,7 +1318,7 @@ h4 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   width: fit-content;
-  margin: 4px 0;
+  margin: 0 0 var(--s2);
 }
 
 .cenik-desc {
@@ -3076,6 +3128,11 @@ h4 {
     margin-bottom: var(--s6);
   }
 
+  /* Příběh – stejná mezera nad nadpisem jako pod ním (byla 96px nahoře, 48px dole) */
+  .pribeh {
+    padding-top: var(--s6);
+  }
+
   /* Mezera nad kartou "Zůstávám po vašem boku..." stejná jako mezi kroky nad ní */
   .steps-grid {
     margin-bottom: var(--s4);
@@ -3311,9 +3368,7 @@ h4 {
 
   .cenik-price {
     font-size: 1.75rem;
-    /* na desktopu má cena navíc 4px nahoře/dole – na mobilu ať jsou
-       všechny rozestupy v kartě stejné jako .cenik-card gap níže */
-    margin: 0;
+    margin: 0 0 var(--s2);
   }
 
   /* Menší a sjednocené rozestupy mezi prvky v kartě (ikona/název/podnadpis/
@@ -3342,7 +3397,7 @@ h4 {
   }
 
   .benefity + .kontakt {
-    padding-top: var(--s6);
+    padding-top: var(--s8);
   }
 
   /* Kontakt */
@@ -3375,8 +3430,12 @@ h4 {
   }
 
   /* Mobil – 1 sloupec, bez přesahů mimo obrazovku */
-  .feature-grid {
+  .jaky-web__layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .jaky-web__statement {
+    padding: var(--s5) var(--s4);
   }
 
   .feature-card {
@@ -3389,8 +3448,8 @@ h4 {
   }
 
   .feature-card__icon {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   .kontakt__body {

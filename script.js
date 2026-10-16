@@ -274,8 +274,8 @@
         form.innerHTML = `
           <div class="form-success" role="alert">
             <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <h3>Zpráva odeslána!</h3>
-            <p>Děkuji za váš zájem. Ozvu se vám co nejdříve.</p>
+            <h3>Děkuji za vaši zprávu!</h3>
+            <p>Ozvu se vám co nejdříve.</p>
           </div>
         `;
       } else {

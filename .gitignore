@@ -1,1 +1,6 @@
 Obrazky/Portfolio/podklady/
+
+# Interní pracovní soubory – zachovat lokálně, nenahrávat na web
+instrukce.md
+.DS_Store
+.claude/
