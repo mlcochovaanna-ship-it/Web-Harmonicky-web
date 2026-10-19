@@ -1535,7 +1535,7 @@ h4 {
   background: linear-gradient(to left, var(--c-primary) 0%, transparent 100%);
 }
 
-.portfolio-info h4 {
+.portfolio-info h3 {
   font-size: var(--h3);
   margin-bottom: var(--s1);
 }

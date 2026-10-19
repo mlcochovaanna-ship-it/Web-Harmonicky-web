@@ -37,7 +37,8 @@
   <link rel="preload" href="Fonty/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css?v=20261019">
@@ -304,7 +305,7 @@
           <!-- Střed: fotka -->
           <div class="o-mne__orbital-center">
             <div class="o-mne__orbital-photo">
-              <img src="Obrazky/harmonicky-web-1.webp" width="2000" height="2000" alt="Anna Mlčochová – webdesignérka z Olomouce" loading="lazy">
+              <img src="Obrazky/harmonicky-web-1.webp" width="1300" height="1300" alt="Anna Mlčochová – webdesignérka z Olomouce" loading="lazy">
             </div>
           </div>
 
@@ -606,7 +607,7 @@
 
             <div class="accordion-item">
               <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-1">
-                <h4 class="accordion-title">Co je součástí webu?</h4>
+                <h3 class="accordion-title">Co je součástí webu?</h3>
                 <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
               </button>
               <div class="accordion-panel" id="faq-1">
@@ -640,7 +641,7 @@
 
             <div class="accordion-item">
               <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-2">
-                <h4 class="accordion-title">Co není v ceně webu?</h4>
+                <h3 class="accordion-title">Co není v ceně webu?</h3>
                 <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
               </button>
               <div class="accordion-panel" id="faq-2">
@@ -661,7 +662,7 @@
 
             <div class="accordion-item">
               <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-3">
-                <h4 class="accordion-title">Co lze domluvit navíc?</h4>
+                <h3 class="accordion-title">Co lze domluvit navíc?</h3>
                 <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
               </button>
               <div class="accordion-panel" id="faq-3">
@@ -688,7 +689,7 @@
 
             <div class="accordion-item">
               <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-4">
-                <h4 class="accordion-title">Pro koho nejčastěji tvořím weby?</h4>
+                <h3 class="accordion-title">Pro koho nejčastěji tvořím weby?</h3>
                 <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
               </button>
               <div class="accordion-panel" id="faq-4">
@@ -717,7 +718,7 @@
 
             <div class="accordion-item">
               <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-5">
-                <h4 class="accordion-title">S jakými nástroji pracuji?</h4>
+                <h3 class="accordion-title">S jakými nástroji pracuji?</h3>
                 <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
               </button>
               <div class="accordion-panel" id="faq-5">
@@ -737,7 +738,7 @@
 
             <div class="accordion-item">
               <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-6">
-                <h4 class="accordion-title">Jak je to s pravidelnou údržbou webu?</h4>
+                <h3 class="accordion-title">Jak je to s pravidelnou údržbou webu?</h3>
                 <i class="fa-solid fa-arrow-down-long accordion-icon" aria-hidden="true"></i>
               </button>
               <div class="accordion-panel" id="faq-6">
@@ -775,7 +776,7 @@
               <img src="Obrazky/Portfolio/mockup-kepner-tregoe.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Kepner-Tregoe" class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
-              <h4>Kepner-Tregoe</h4>
+              <h3>Kepner-Tregoe</h3>
               <p>Web pro lektora metodiky Kepner-Tregoe a&nbsp;jeho nabídku seminářů.</p>
               <a href="https://kepner-tregoe.cz" target="_blank" rel="noopener noreferrer" class="portfolio-link">kepner-tregoe.cz <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
             </div>
@@ -785,7 +786,7 @@
               <img src="Obrazky/Portfolio/mockup-rudolfguzik.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Rudolf Guzik" class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
-              <h4>Rudolf Guzik</h4>
+              <h3>Rudolf Guzik</h3>
               <p>Web pro kouče a&nbsp;mentora osobního a&nbsp;profesního rozvoje.</p>
               <a href="https://rudolfguzik.cz" target="_blank" rel="noopener noreferrer" class="portfolio-link">rudolfguzik.cz <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
             </div>
@@ -795,7 +796,7 @@
               <img src="Obrazky/Portfolio/mockup-alenahanusova.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Alena Hanušová" class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
-              <h4>Alena Hanušová</h4>
+              <h3>Alena Hanušová</h3>
               <p>Web pro byznys mentorku propojující podnikání a&nbsp;astrologii.</p>
               <a href="https://alenahanusova.cz" target="_blank" rel="noopener noreferrer" class="portfolio-link">alenahanusova.cz <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
             </div>
@@ -811,7 +812,7 @@
                 class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
-              <h4>Podlahářství Dragoun</h4>
+              <h3>Podlahářství Dragoun</h3>
               <p>Web pro malé podlahářství s&nbsp;30letou rodinnou tradicí zajišťující podlahy na&nbsp;klíč.</p>
               <a href="https://podlaharstvi-dragoun.cz" target="_blank" rel="noopener noreferrer"
                 class="portfolio-link">podlaharstvi-dragoun.cz <i class="fa-solid fa-arrow-up-right-from-square"
@@ -825,7 +826,7 @@
                 class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
-              <h4>Raška engineering</h4>
+              <h3>Raška engineering</h3>
               <p>Web pro firmu zajišťující elektro služby, fotovoltaiku a&nbsp;průmyslová řešení.</p>
               <a href="https://raskaengineering.cz" target="_blank" rel="noopener noreferrer"
                 class="portfolio-link">raskaengineering.cz <i class="fa-solid fa-arrow-up-right-from-square"
@@ -839,7 +840,7 @@
                 class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
-              <h4>Mysterijní škola ženství</h4>
+              <h3>Mysterijní škola ženství</h3>
               <p>Web pro tantrickou školu pro ženy a&nbsp;její roční iniciační program.</p>
               <a href="https://mysterijniskolazenstvi.cz" target="_blank" rel="noopener noreferrer"
                 class="portfolio-link">mysterijniskolazenstvi.cz <i class="fa-solid fa-arrow-up-right-from-square"
