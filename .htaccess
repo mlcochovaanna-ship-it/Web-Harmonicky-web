@@ -13,28 +13,39 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  RewriteRule ^testtest/$ / [R=301,L]
-  RewriteRule ^webove-stranky-pro-sluzby-pece-o-telo/$ /weby-pro-masery-a-peci-o-telo [R=301,L]
-  RewriteRule ^portfolio/$ /portfolio [R=301,L]
+  # Absolutní https cíl (ne jen "/"), protože CDN terminuje TLS a Apache by
+  # jinak přesměroval na http:// – vznikl by zbytečný druhý skok http->https
+  RewriteRule ^testtest/$ https://harmonickyweb.cz/ [R=301,L]
+  RewriteRule ^webove-stranky-pro-sluzby-pece-o-telo/$ https://harmonickyweb.cz/weby-pro-masery-a-peci-o-telo [R=301,L]
+  RewriteRule ^portfolio/$ https://harmonickyweb.cz/portfolio [R=301,L]
 </IfModule>
 
 # --- Čisté URL (bez .html) ---
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 301: /index.html -> /
+  # 301: /index.html -> / (absolutní https, viz poznámka výše)
   RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
-  RewriteRule ^ /? [R=301,L]
+  RewriteRule ^ https://harmonickyweb.cz/ [R=301,L]
 
   # 301: /stranka.html -> /stranka (staré odkazy/záložky)
   RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
-  RewriteRule ^ /%1 [R=301,L]
+  RewriteRule ^ https://harmonickyweb.cz/%1 [R=301,L]
 
   # Interní přepis: /stranka -> stranka.html (neviditelně, beze změny URL)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^([^.]+)$ $1.html [L]
+</IfModule>
+
+# --- Blokace skrytých souborů/složek (.git, .gitignore, .DS_Store...) ---
+# Na ostré doméně je zatím vidět (403) celá .git složka a .gitignore je
+# veřejně čitelný (200) – nahrává se celý projektový adresář i s tečkovými
+# soubory. Tohle je pojistka navíc, ať to není jen na výchozím chování hostingu.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule (^|/)\. - [F]
 </IfModule>
 
 # --- Chybová stránka ---

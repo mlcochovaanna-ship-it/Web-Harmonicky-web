@@ -33,12 +33,14 @@
   <link rel="icon" type="image/png" href="Obrazky/logo-male.png">
 
   <!-- Fonts -->
+  <link rel="preload" href="Fonty/EBGaramond-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="Fonty/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=20261016">
+  <link rel="stylesheet" href="style.css?v=20261019">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -198,7 +200,9 @@
     ============================================================ -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero__bg">
-        <img src="Obrazky/harmonicky-web-0.jpg" width="2000" height="1333" alt="Anna Mlčochová – webdesignérka" fetchpriority="high">
+        <img src="Obrazky/harmonicky-web-0.webp"
+          srcset="Obrazky/harmonicky-web-0-mobile.webp 900w, Obrazky/harmonicky-web-0.webp 2000w"
+          sizes="100vw" width="2000" height="1333" alt="Anna Mlčochová – webdesignérka" fetchpriority="high">
       </div>
 
       <div class="hero__content">
@@ -300,7 +304,7 @@
           <!-- Střed: fotka -->
           <div class="o-mne__orbital-center">
             <div class="o-mne__orbital-photo">
-              <img src="Obrazky/harmonicky-web-1.jpg" width="2000" height="2000" alt="Anna Mlčochová – webdesignérka z Olomouce" loading="lazy">
+              <img src="Obrazky/harmonicky-web-1.webp" width="2000" height="2000" alt="Anna Mlčochová – webdesignérka z Olomouce" loading="lazy">
             </div>
           </div>
 
@@ -447,7 +451,7 @@
     ============================================================ -->
     <section class="section spoluprace" id="spoluprace" aria-labelledby="spoluprace-h">
       <div class="spoluprace__bg">
-        <img src="Obrazky/harmonicky-web-2.jpg" width="2000" height="1333" alt="" aria-hidden="true" loading="lazy">
+        <img src="Obrazky/harmonicky-web-2.webp" width="2000" height="1333" alt="" aria-hidden="true" loading="lazy">
         <div class="spoluprace__overlay"></div>
       </div>
       <div class="container">
@@ -768,7 +772,7 @@
         <div class="portfolio-grid">
           <article class="portfolio-card">
             <div class="portfolio-mockup">
-              <img src="Obrazky/Portfolio/mockup-kepner-tregoe.png?v=20261016" width="1600" height="1000" alt="Náhled webu Kepner-Tregoe" class="portfolio-mockup-img" loading="lazy">
+              <img src="Obrazky/Portfolio/mockup-kepner-tregoe.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Kepner-Tregoe" class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
               <h4>Kepner-Tregoe</h4>
@@ -778,7 +782,7 @@
           </article>
           <article class="portfolio-card">
             <div class="portfolio-mockup">
-              <img src="Obrazky/Portfolio/mockup-rudolfguzik.png?v=20261016" width="1600" height="1000" alt="Náhled webu Rudolf Guzik" class="portfolio-mockup-img" loading="lazy">
+              <img src="Obrazky/Portfolio/mockup-rudolfguzik.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Rudolf Guzik" class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
               <h4>Rudolf Guzik</h4>
@@ -788,7 +792,7 @@
           </article>
           <article class="portfolio-card">
             <div class="portfolio-mockup">
-              <img src="Obrazky/Portfolio/mockup-alenahanusova.png?v=20261016" width="1600" height="1000" alt="Náhled webu Alena Hanušová" class="portfolio-mockup-img" loading="lazy">
+              <img src="Obrazky/Portfolio/mockup-alenahanusova.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Alena Hanušová" class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
               <h4>Alena Hanušová</h4>
@@ -803,7 +807,7 @@
 
           <article class="portfolio-card">
             <div class="portfolio-mockup">
-              <img src="Obrazky/Portfolio/mockup-dragoun.png?v=20261016" width="1600" height="1000" alt="Náhled webu Podlahářství Dragoun"
+              <img src="Obrazky/Portfolio/mockup-dragoun.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Podlahářství Dragoun"
                 class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
@@ -817,7 +821,7 @@
 
           <article class="portfolio-card">
             <div class="portfolio-mockup">
-              <img src="Obrazky/Portfolio/mockup-raska-engineering.png?v=20261016" width="1600" height="1000" alt="Náhled webu Raška engineering"
+              <img src="Obrazky/Portfolio/mockup-raska-engineering.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Raška engineering"
                 class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
@@ -831,7 +835,7 @@
 
           <article class="portfolio-card">
             <div class="portfolio-mockup">
-              <img src="Obrazky/Portfolio/mockup-tantra.png?v=20261016" width="1600" height="1000" alt="Náhled webu Mysterijní škola ženství"
+              <img src="Obrazky/Portfolio/mockup-tantra.webp?v=20261016" width="1600" height="1000" alt="Náhled webu Mysterijní škola ženství"
                 class="portfolio-mockup-img" loading="lazy">
             </div>
             <div class="portfolio-info">
@@ -856,7 +860,7 @@
     ============================================================ -->
     <section class="section reference" id="reference" aria-labelledby="reference-h">
       <div class="reference__bg">
-        <img src="Obrazky/harmonicky-web-3.jpg" width="2000" height="1333" alt="" aria-hidden="true" loading="lazy">
+        <img src="Obrazky/harmonicky-web-3.webp" width="2000" height="1333" alt="" aria-hidden="true" loading="lazy">
       </div>
       <div class="reference__overlay"></div>
       <div class="container">
@@ -962,7 +966,7 @@
         <div class="benefity__grid">
 
           <div class="benefity__image">
-            <img src="Obrazky/harmonicky-web-4.jpg" width="820" height="1230" alt="Web jako nástroj pro rozvoj podnikání" loading="lazy">
+            <img src="Obrazky/harmonicky-web-4.webp" width="820" height="1230" alt="Web jako nástroj pro rozvoj podnikání" loading="lazy">
           </div>
 
           <div class="benefity__cards">
@@ -1155,7 +1159,7 @@
   </footer>
 
 
-  <script src="script.js?v=20261016"></script>
+  <script src="script.js?v=20261019"></script>
 </body>
 
 </html>

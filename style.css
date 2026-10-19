@@ -8,7 +8,7 @@
    ============================================================ */
 @font-face {
   font-family: 'Gistesy';
-  src: url('Fonty/Gistesy.otf') format('opentype');
+  src: url('Fonty/Gistesy.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,35 +16,35 @@
 
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Regular.ttf') format('truetype');
+  src: url('Fonty/EBGaramond-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Italic.ttf') format('truetype');
+  src: url('Fonty/EBGaramond-Italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Medium.ttf') format('truetype');
+  src: url('Fonty/EBGaramond-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-SemiBold.ttf') format('truetype');
+  src: url('Fonty/EBGaramond-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Bold.ttf') format('truetype');
+  src: url('Fonty/EBGaramond-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -52,35 +52,35 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Light.ttf') format('truetype');
+  src: url('Fonty/Montserrat-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Regular.ttf') format('truetype');
+  src: url('Fonty/Montserrat-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Medium.ttf') format('truetype');
+  src: url('Fonty/Montserrat-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-SemiBold.ttf') format('truetype');
+  src: url('Fonty/Montserrat-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Bold.ttf') format('truetype');
+  src: url('Fonty/Montserrat-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -2965,7 +2965,7 @@ h4 {
   min-height: 480px;
   display: flex;
   align-items: center;
-  background-image: url('Obrazky/harmonicky-web-5.jpg');
+  background-image: url('Obrazky/harmonicky-web-5.webp');
   background-size: cover;
   background-position: 65% center;
   background-attachment: fixed;
@@ -3053,6 +3053,60 @@ h4 {
 
 .lp-portfolio {
   background: var(--c-white);
+}
+
+/* ============================================================
+   CHYBOVÁ STRÁNKA (404)
+   ============================================================ */
+.error-page {
+  min-height: calc(100svh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-secondary) 100%);
+}
+
+.error-page__inner {
+  max-width: 680px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.error-page__icon {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto var(--s5);
+  border-radius: 50%;
+  background: var(--g-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sh-md);
+}
+
+.error-page__icon img {
+  width: 56px;
+  height: 56px;
+  filter: brightness(0) invert(1);
+}
+
+/* Stejný rozestup ikona->nadpis i nadpis->text (section-title má jinde
+   vlastní margin-bottom: 4rem, tady chceme stejnou mezeru jako pod ikonou) */
+.error-page .section-title {
+  margin-bottom: var(--s5);
+}
+
+.error-page__text {
+  /* globální "p { text-align: left }" by jinak přebilo zděděné center */
+  text-align: center;
+  color: var(--c-muted);
+  font-size: var(--t-lg);
+  line-height: 1.7;
+  margin-bottom: var(--s5);
+}
+
+.error-page__cta {
+  justify-content: center;
 }
 
 /* ============================================================
