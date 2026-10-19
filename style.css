@@ -8,7 +8,7 @@
    ============================================================ */
 @font-face {
   font-family: 'Gistesy';
-  src: url('Fonty/Gistesy.woff2') format('woff2');
+  src: url('Fonty/Gistesy.woff2?v=20261021') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,35 +16,35 @@
 
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Regular.woff2') format('woff2');
+  src: url('Fonty/EBGaramond-Regular.woff2?v=20261021') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Italic.woff2') format('woff2');
+  src: url('Fonty/EBGaramond-Italic.woff2?v=20261021') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Medium.woff2') format('woff2');
+  src: url('Fonty/EBGaramond-Medium.woff2?v=20261021') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-SemiBold.woff2') format('woff2');
+  src: url('Fonty/EBGaramond-SemiBold.woff2?v=20261021') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'EB Garamond';
-  src: url('Fonty/EBGaramond-Bold.woff2') format('woff2');
+  src: url('Fonty/EBGaramond-Bold.woff2?v=20261021') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -52,35 +52,35 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Light.woff2') format('woff2');
+  src: url('Fonty/Montserrat-Light.woff2?v=20261021') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Regular.woff2') format('woff2');
+  src: url('Fonty/Montserrat-Regular.woff2?v=20261021') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Medium.woff2') format('woff2');
+  src: url('Fonty/Montserrat-Medium.woff2?v=20261021') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-SemiBold.woff2') format('woff2');
+  src: url('Fonty/Montserrat-SemiBold.woff2?v=20261021') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Fonty/Montserrat-Bold.woff2') format('woff2');
+  src: url('Fonty/Montserrat-Bold.woff2?v=20261021') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -1922,6 +1922,17 @@ h4 {
 .kontakt__contact-item:hover {
   background: rgba(255, 255, 255, 0.20);
   transform: translateX(4px);
+  text-decoration: none;
+}
+
+/* odkaz uvnitř .kontakt__contact-item (telefon) – box styl zůstává na
+   obalu s role="listitem", <a> jen přebírá layout, aby byl klikatelný celý řádek */
+.kontakt__contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  width: 100%;
+  color: inherit;
   text-decoration: none;
 }
 

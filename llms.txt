@@ -1,8 +1,18 @@
-# harmonickyweb.cz – llms.txt
+# harmonickyweb.cz
 
 > Anna Mlčochová | Webdesignérka pro Olomouc a okolí
 
 Anna Mlčochová tvoří profesionální webové stránky pro podnikatele, živnostníky a kreativní tvůrce v Olomouci a okolí. Zaměřuje se na autentické, krásné a funkční weby, které přitahují správné klienty.
+
+## Stránky
+- [Úvodní stránka](https://harmonickyweb.cz/): Hlavní stránka – o mně, jak probíhá spolupráce, ceník, reference i kontakt.
+- [O mně](https://harmonickyweb.cz/#o-mne): Kdo stojí za tvorbou webů a proč zrovna autentický přístup.
+- [Spolupráce](https://harmonickyweb.cz/#spoluprace): Jak probíhá tvorba webu krok za krokem.
+- [Ceník](https://harmonickyweb.cz/#cenik): Ceny malých, středních a velkých webů.
+- [Portfolio](https://harmonickyweb.cz/portfolio): Ukázky vytvořených webů.
+- [Weby pro masérky a péči o tělo](https://harmonickyweb.cz/weby-pro-masery-a-peci-o-telo): Specializovaná nabídka pro obor péče o tělo.
+- [Reference](https://harmonickyweb.cz/#reference): Zkušenosti klientů.
+- [Kontakt](https://harmonickyweb.cz/#kontakt): Kontaktní formulář a údaje.
 
 ## Kontakt
 - E-mail: anna@harmonickyweb.cz
@@ -17,5 +27,5 @@ Anna Mlčochová tvoří profesionální webové stránky pro podnikatele, živn
 - Velké a rozsáhlé weby od 30 000 Kč
 - Správa a údržba webů
 
-## Blokovano
-Žádný obsah není blokován pro AI modely.
+## Optional
+- Žádný obsah na webu není blokován pro AI modely.
