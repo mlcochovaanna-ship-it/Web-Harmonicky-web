@@ -442,6 +442,9 @@ h4 {
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+  /* bez tohoto se logo v užším nav-containeru (tablet) zmenšovalo jako běžný
+     flex prvek a kvůli pevné výšce + width:auto se vizuálně zdrcávalo */
+  flex-shrink: 0;
 }
 
 .nav-logo:hover {
@@ -1858,7 +1861,9 @@ h4 {
 /* 2 sloupce: info vlevo, formulář vpravo */
 .kontakt__body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* minmax(0, 1fr), ne jen 1fr – jinak si sloupec s delším obsahem (kontaktní
+     údaje) na tabletu vynutí šířku podle obsahu a formulář se zúží a ořízne */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s6);
   align-items: stretch;
 }
@@ -3062,8 +3067,78 @@ h4 {
 
   .steps-grid {
     grid-template-columns: 1fr;
-    max-width: 540px;
-    margin-inline: auto;
+  }
+
+  /* Akordeony (FAQ, "Přečtěte si můj PŘÍBĚH") – 2 sloupce na tabletu způsobují
+     zalamování delších otázek na dva řádky. Každá položka na vlastní řádek. */
+  .accordion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* O mně – 3sloupcové orbitální rozvržení (text / fotka / text) se na tabletu
+     zmáčkne tak, že fotka uprostřed vypadá malá a stísněná. Stejné řešení jako
+     na mobilu: fotka nahoru přes celou šířku, body pod ní v jednom sloupci. */
+  .o-mne__orbital {
+    grid-template-columns: 1fr;
+    gap: var(--s3);
+  }
+
+  .o-mne__orbital-col--left {
+    order: 2;
+    text-align: left;
+    margin-top: var(--s2);
+  }
+
+  .o-mne__orbital-center {
+    order: 1;
+  }
+
+  .o-mne__orbital-col--right {
+    order: 3;
+  }
+
+  .o-mne__orbital-col {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .o-mne__feature {
+    flex: none;
+  }
+
+  .o-mne__feature--left {
+    flex-direction: row-reverse;
+  }
+
+  .o-mne__feature--left .o-mne__feature-text,
+  .o-mne__feature--right .o-mne__feature-text {
+    text-align: left;
+    padding-inline: var(--s2) 0;
+  }
+
+  .o-mne__feature--left .o-mne__feature-dot,
+  .o-mne__feature--right .o-mne__feature-dot {
+    margin: 0;
+  }
+
+  .o-mne__feature-line {
+    display: none;
+  }
+
+  .o-mne__feature-dot {
+    width: 46px;
+    height: 46px;
+  }
+
+  .o-mne__feature-dot img {
+    width: 23px;
+    height: 23px;
+  }
+
+  /* Ceník – 3 sloupce se na tabletu nevejdou čitelně, text se láme do úzkých
+     sloupečků. Stejné řešení jako u kroků spolupráce (steps-grid) výše. */
+  .cenik-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer-grid {
@@ -3073,11 +3148,6 @@ h4 {
 
   .footer-col--brand {
     grid-column: 1 / -1;
-  }
-
-  /* Reference – 2 sloupce na tabletu */
-  .refs-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   /* LP – tablet: text nahoře, fotky jako vodorovné pruhy pod ním */
@@ -3109,41 +3179,9 @@ h4 {
   .lp-about__overlay {
     width: 90%;
   }
-}
 
-/* --- TABLET/MOBIL 768px --- */
-@media (max-width: 768px) {
-
-  /* Mobil – základní text o stupeň menší (16 → 15 px), nadpisy naopak zvětšené */
-  :root {
-    --t-base: 0.9375rem;
-    --h2: 1.85rem;
-    --h3: 1.3rem;
-    --h4: 1.05rem;
-    --hero-h2: 2.5rem;
-  }
-
-  /* Menší mezera pod nadpisy sekcí (byla 4rem/64px všude stejná) */
-  .section-title {
-    margin-bottom: var(--s6);
-  }
-
-  /* Příběh – stejná mezera nad nadpisem jako pod ním (byla 96px nahoře, 48px dole) */
-  .pribeh {
-    padding-top: var(--s6);
-  }
-
-  /* Mezera nad kartou "Zůstávám po vašem boku..." stejná jako mezi kroky nad ní */
-  .steps-grid {
-    margin-bottom: var(--s4);
-  }
-
-  /* LP hero – text běžel od kraje ke kraji, chybělo boční odsazení jako u .container */
-  .lp-hero__content {
-    padding-inline: 5%;
-  }
-
-  /* Hamburger */
+  /* Menu se na tabletu nevejde vedle loga (viz .nav-logo flex-shrink: 0 níže) –
+     přepíná se tu na stejný hamburger jako na mobilu. */
   .hamburger {
     display: flex;
   }
@@ -3160,6 +3198,9 @@ h4 {
     -webkit-backdrop-filter: blur(18px);
     flex-direction: column;
     align-items: stretch;
+    /* Text center – řádky zůstávají přes celou šířku (hezké oddělovací linky
+       přes celou šířku), ale obsah (text i tlačítko Kontakt) je na střed. */
+    text-align: center;
     /* nahoře místo navíc pro lištu s logem – menu ji po otevření podkládá vlastním
        blurem (viz .nav-menu.is-open níže), aby nešlo o dva vnořené blury zároveň */
     padding: calc(var(--nav-h) + var(--s3)) var(--s3) var(--s3);
@@ -3203,6 +3244,42 @@ h4 {
     padding: 0.6rem 1.25rem;
     border-bottom: none;
   }
+}
+
+/* --- TABLET/MOBIL (≤1024px) ---
+   Byl tu dřív jen pro mobil (≤768px); teď platí i pro tablet, aby sekce jako
+   portfolio, reference, benefity nebo kontakt vypadaly na tabletu stejně
+   jako na mobilu místo zvláštního "napůl" tabletového rozvržení. */
+@media (max-width: 1024px) {
+
+  /* Mobil – základní text o stupeň menší (16 → 15 px), nadpisy naopak zvětšené */
+  :root {
+    --t-base: 0.9375rem;
+    --h2: 1.85rem;
+    --h3: 1.3rem;
+    --h4: 1.05rem;
+    --hero-h2: 2.5rem;
+  }
+
+  /* Menší mezera pod nadpisy sekcí (byla 4rem/64px všude stejná) */
+  .section-title {
+    margin-bottom: var(--s6);
+  }
+
+  /* Příběh – stejná mezera nad nadpisem jako pod ním (byla 96px nahoře, 48px dole) */
+  .pribeh {
+    padding-top: var(--s6);
+  }
+
+  /* Mezera nad kartou "Zůstávám po vašem boku..." stejná jako mezi kroky nad ní */
+  .steps-grid {
+    margin-bottom: var(--s4);
+  }
+
+  /* LP hero – text běžel od kraje ke kraji, chybělo boční odsazení jako u .container */
+  .lp-hero__content {
+    padding-inline: 5%;
+  }
 
   /* Sections */
   .section {
@@ -3238,69 +3315,6 @@ h4 {
     max-width: 100%;
     padding: var(--s5) var(--s4);
     border-radius: var(--r-lg);
-  }
-
-  /* O mně */
-  .o-mne__orbital {
-    grid-template-columns: 1fr;
-    gap: var(--s3);
-  }
-
-  .o-mne__orbital-col--left {
-    order: 2;
-    text-align: left;
-    /* větší odstup od fotky nad tímto blokem, než jaký mají body mezi sebou */
-    margin-top: var(--s2);
-  }
-
-  .o-mne__orbital-center {
-    order: 1;
-  }
-
-  .o-mne__orbital-col--right {
-    order: 3;
-  }
-
-  .o-mne__orbital-col {
-    justify-content: flex-start;
-  }
-
-  /* Všechny body stejně: ikona vlevo s odstupem od kraje, text zarovnaný doleva */
-  .o-mne__orbital-col {
-    padding: 0;
-  }
-
-  .o-mne__feature {
-    flex: none;
-  }
-
-  .o-mne__feature--left {
-    flex-direction: row-reverse;
-  }
-
-  .o-mne__feature--left .o-mne__feature-text,
-  .o-mne__feature--right .o-mne__feature-text {
-    text-align: left;
-    padding-inline: var(--s2) 0;
-  }
-
-  .o-mne__feature--left .o-mne__feature-dot,
-  .o-mne__feature--right .o-mne__feature-dot {
-    margin: 0;
-  }
-
-  .o-mne__feature-line {
-    display: none;
-  }
-
-  .o-mne__feature-dot {
-    width: 46px;
-    height: 46px;
-  }
-
-  .o-mne__feature-dot img {
-    width: 23px;
-    height: 23px;
   }
 
   /* Accordion – 1 sloupec */
@@ -3587,14 +3601,137 @@ h4 {
   }
 }
 
+/* --- Jaký může být váš web – vrátit na tabletu k původnímu vzhledu ---
+   Tablet teď jinak dědí mobilní jednosloupcové rozvržení z bloku výše,
+   ale tahle sekce měla na tabletu zůstat jako na desktopu (karty vedle sebe). */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .jaky-web__layout {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--s4);
+  }
+
+  .jaky-web__statement {
+    padding: var(--s6) var(--s5);
+  }
+
+  .feature-card {
+    padding: 2.5rem;
+  }
+
+  .feature-card__icon-wrap {
+    width: 60px;
+    height: 60px;
+  }
+
+  .feature-card__icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* --- Ceník – na tabletu 2 karty vedle sebe + 1 doprostřed pod ně ---
+   Plná šířka na jeden sloupec (jako na mobilu) je na tabletu zbytečně
+   široká. Mřížka o 4 stejných sloupcích, každá karta přes 2 z nich –
+   třetí (poslední) kartu to díky tomu vycentruje pod ty dvě nahoře,
+   všechny tři karty vyjdou stejně široké. */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cenik-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cenik-card:nth-child(1) {
+    grid-column: 1 / 3;
+  }
+
+  .cenik-card:nth-child(2) {
+    grid-column: 3 / 5;
+  }
+
+  .cenik-card:nth-child(3) {
+    grid-column: 2 / 4;
+  }
+}
+
+/* --- Spolupráce (jak to probíhá) – na tabletu 2×2 ---
+   3 kroky + závěrečná karta "Zůstávám po vašem boku..." dohromady jako
+   4 stejně velké dlaždice: krok 1+2 nahoře, krok 3 + závěrečná karta dole.
+   .steps-grid se "rozpustí" (display: contents), takže její 3 karty i
+   .spoluprace__footer skončí jako přímé položky jedné 2sloupcové mřížky. */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .spoluprace .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--s4);
+    row-gap: var(--s4);
+  }
+
+  .spoluprace .section-label,
+  .spoluprace .section-title {
+    grid-column: 1 / -1;
+  }
+
+  .spoluprace .steps-grid {
+    display: contents;
+  }
+
+  .spoluprace__footer {
+    margin-top: 0;
+  }
+}
+
+/* --- Benefity ("Víc, než jen hezké stránky") – karty na tabletu 2×2 --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .benefit-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s3);
+  }
+}
+
+/* --- Portfolio – mockupy na tabletu užší, ne na celou šířku karty --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .portfolio-mockup-img {
+    max-width: 70%;
+    margin-inline: auto;
+  }
+}
+
 /* --- MOBIL 480px --- */
 @media (max-width: 480px) {
+  /* Na užších telefonech se "Vytvořím vám web," samo zalamovalo na 2 řádky
+     (plus ruční <br> před druhým řádkem) = 4 řádky textu, karta pak byla tak
+     vysoká, že úplně zakryla fotku nad sebou. Menší písmo → zpátky 2 řádky. */
+  .hero__title {
+    font-size: 2.125rem;
+    margin-bottom: var(--s2);
+  }
+
+  /* V reálném prohlížeči (Safari s adresním řádkem) je viditelná výška menší,
+     než na jaké se to testuje v nástrojích – karta pak i se 2řádkovým
+     nadpisem zakrývala obličej skoro až po bradu. Zúžené odsazení a mezery
+     v kartě uvolní dost místa, aby byla fotka nad kartou vidět celá. */
+  .hero__card {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 0.4rem;
+  }
+
+  .hero__desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: var(--s3);
+  }
+
   .hero__cta {
     flex-direction: column;
+    gap: 0.6rem;
   }
 
   .hero__cta .btn {
     width: 100%;
+    padding: 0.6rem 1.5rem;
   }
 
   .footer-grid {
