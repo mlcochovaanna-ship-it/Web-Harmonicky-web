@@ -3074,7 +3074,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-secondary) 100%);
+  background: linear-gradient(to bottom, #f0ede8 0%, #fdf6f2 50%, #f0ede8 100%);
 }
 
 .error-page__inner {
@@ -3118,6 +3118,45 @@ h4 {
 
 .error-page__cta {
   justify-content: center;
+}
+
+/* ============================================================
+   ZÁSADY ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ
+   ============================================================ */
+.zasady {
+  padding-top: calc(var(--nav-h) + var(--s12));
+  background: linear-gradient(to bottom, #f0ede8 0%, #fdf6f2 50%, #f0ede8 100%);
+}
+
+.container.zasady__content {
+  max-width: 820px;
+}
+
+.zasady__date {
+  margin-bottom: var(--s5);
+  color: var(--c-muted);
+}
+
+.zasady h2 {
+  font-size: var(--h3);
+  margin-top: var(--s5);
+  margin-bottom: var(--s2);
+}
+
+.zasady .section-label,
+.zasady .section-title {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.zasady ul {
+  list-style: disc;
+  padding-left: 1.3em;
+  margin-bottom: var(--s2);
+}
+
+.zasady li {
+  margin-bottom: var(--s1);
 }
 
 /* ============================================================

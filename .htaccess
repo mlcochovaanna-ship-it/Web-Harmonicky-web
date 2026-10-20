@@ -53,6 +53,10 @@ ErrorDocument 404 /404.html
 
 # --- Bezpečnostní HTTP hlavičky ---
 <IfModule mod_headers.c>
+  # HSTS – prohlížeč si rok pamatuje, že má na doménu chodit jen přes HTTPS
+  # (bez includeSubDomains, dokud nejsou ověřené všechny subdomény, např. e-mail)
+  Header always set Strict-Transport-Security "max-age=31536000"
+
   # Zamezení načítání webu ve framech (clickjacking)
   Header always set X-Frame-Options "SAMEORIGIN"
 
@@ -66,7 +70,7 @@ ErrorDocument 404 /404.html
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 
   # Content Security Policy – upravit podle potřeby
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io;"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io;"
 </IfModule>
 
 # --- Komprese ---

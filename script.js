@@ -6,6 +6,16 @@
 'use strict';
 
 /* ============================================================
+   ASYNC CSS (Font Awesome) – aktivace preloadnutého stylesheetu
+   Místo inline onload="" atributu (ten by vyžadoval 'unsafe-inline'
+   v CSP script-src); script.js běží až na konci <body>, takže se
+   tím nic nezpomalí.
+   ============================================================ */
+document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (link) {
+  link.rel = 'stylesheet';
+});
+
+/* ============================================================
    HAMBURGER MENU
    ============================================================ */
 (function initHamburger() {
