@@ -40,34 +40,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=20261021">
-
-  <!-- LP override: header není fixní, pozadí sekcí, portfolio glass efekt -->
-  <style>
-    .site-header { position: relative; background: var(--c-primary); }
-    .site-header .navbar { height: var(--nav-h); }
-    .lp-hero { padding-top: var(--s8) !important; min-height: calc(100svh - var(--nav-h)) !important; }
-    @media (min-width: 1025px) {
-      .lp-hero__body { height: calc(100svh - var(--nav-h) - var(--s8) * 2); }
-    }
-    /* Spolupráce + Ceník – bílé pozadí */
-    .lp-steps { background: var(--c-white); }
-    .lp-pricing { background: var(--c-white); }
-    /* Portfolio – béžové pozadí, glass karty */
-    .lp-portfolio { background: var(--c-primary); padding-block-end: var(--s10); }
-    .lp-portfolio .portfolio-info { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.65); }
-    .lp-portfolio .portfolio-info::before { background: linear-gradient(to right, var(--c-primary) 0%, rgba(240,237,232,0) 100%); }
-    .lp-portfolio .portfolio-card:nth-child(even) .portfolio-info::before { background: linear-gradient(to left, var(--c-primary) 0%, rgba(240,237,232,0) 100%); }
-    .lp-faq .accordion-item { background: rgba(1, 92, 99, 0.08); border: 1px solid rgba(1, 92, 99, 0.18); }
-    .lp-faq .accordion-trigger:hover { background: rgba(1, 92, 99, 0.12); }
-    .lp-faq .accordion-title { color: var(--c-accent-deep); }
-    .lp-faq .accordion-icon { color: var(--c-accent); }
-    .container { width: 75%; }
-    @media (max-width: 768px) { .container { width: 90%; } }
-    .reference { background-image: url('Obrazky/harmonicky-web-3.webp'); background-size: cover; background-position: center; background-attachment: fixed; padding-block-end: var(--s10); }
-    .reference .refs-grid { margin-top: 0; }
-
-  </style>
+  <link rel="stylesheet" href="style.css?v=20261102">
 
   <!-- Breadcrumb + Service Schema Markup -->
   <script type="application/ld+json">
@@ -177,7 +150,7 @@
   </script>
 </head>
 
-<body>
+<body class="lp-page">
 
   <header class="site-header" role="banner">
     <nav class="navbar" aria-label="Hlavní navigace">

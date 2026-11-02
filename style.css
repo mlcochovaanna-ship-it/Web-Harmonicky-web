@@ -2216,6 +2216,10 @@ h4 {
   margin: 0;
 }
 
+.form-note--spaced {
+  margin-bottom: var(--s2);
+}
+
 /* ============================================================
    PATIČKA
    ============================================================ */
@@ -3855,3 +3859,30 @@ h4 {
     max-width: 1440px;
   }
 }
+/* ============================================================
+   LANDING PAGE – weby pro masérky a péči o tělo
+   Přepisy jen pro tuto stránku (body.lp-page). Prefix :where()
+   nezvyšuje specificitu – blok musí zůstat na konci souboru.
+   ============================================================ */
+:where(.lp-page) .site-header { position: relative; background: var(--c-primary); }
+:where(.lp-page) .site-header .navbar { height: var(--nav-h); }
+:where(.lp-page) .lp-hero { padding-top: var(--s8) !important; min-height: calc(100svh - var(--nav-h)) !important; }
+@media (min-width: 1025px) {
+  :where(.lp-page) .lp-hero__body { height: calc(100svh - var(--nav-h) - var(--s8) * 2); }
+}
+/* Spolupráce + Ceník – bílé pozadí */
+:where(.lp-page) .lp-steps { background: var(--c-white); }
+:where(.lp-page) .lp-pricing { background: var(--c-white); }
+/* Portfolio – béžové pozadí, glass karty */
+:where(.lp-page) .lp-portfolio { background: var(--c-primary); padding-block-end: var(--s10); }
+:where(.lp-page) .lp-portfolio .portfolio-info { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.65); }
+:where(.lp-page) .lp-portfolio .portfolio-info::before { background: linear-gradient(to right, var(--c-primary) 0%, rgba(240,237,232,0) 100%); }
+:where(.lp-page) .lp-portfolio .portfolio-card:nth-child(even) .portfolio-info::before { background: linear-gradient(to left, var(--c-primary) 0%, rgba(240,237,232,0) 100%); }
+:where(.lp-page) .lp-faq .accordion-item { background: rgba(1, 92, 99, 0.08); border: 1px solid rgba(1, 92, 99, 0.18); }
+:where(.lp-page) .lp-faq .accordion-trigger:hover { background: rgba(1, 92, 99, 0.12); }
+:where(.lp-page) .lp-faq .accordion-title { color: var(--c-accent-deep); }
+:where(.lp-page) .lp-faq .accordion-icon { color: var(--c-accent); }
+:where(.lp-page) .container { width: 75%; }
+@media (max-width: 768px) { :where(.lp-page) .container { width: 90%; } }
+:where(.lp-page) .reference { background-image: url('Obrazky/harmonicky-web-3.webp'); background-size: cover; background-position: center; background-attachment: fixed; padding-block-end: var(--s10); }
+:where(.lp-page) .reference .refs-grid { margin-top: 0; }
