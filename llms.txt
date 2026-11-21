@@ -1,8 +1,8 @@
 # harmonickyweb.cz
 
-> Anna Mlčochová | Webdesignérka pro Olomouc a okolí
+> Anna Mlčochová | Webdesignérka pro klienty po celé ČR, osobně v Olomouci a okolí
 
-Anna Mlčochová tvoří profesionální webové stránky pro podnikatele, živnostníky a kreativní tvůrce v Olomouci a okolí. Zaměřuje se na autentické, krásné a funkční weby, které přitahují správné klienty.
+Anna Mlčochová tvoří profesionální webové stránky pro podnikatele, živnostníky a kreativní tvůrce po celé ČR – online, nebo osobně v Olomouci a okolí. Zaměřuje se na autentické, krásné a funkční weby, které přitahují správné klienty.
 
 ## Stránky
 - [Úvodní stránka](https://harmonickyweb.cz/): Hlavní stránka – o mně, jak probíhá spolupráce, ceník, reference i kontakt.
