@@ -182,6 +182,7 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
   const prev = slider.querySelector('.ref-slider__arrow--prev');
   const next = slider.querySelector('.ref-slider__arrow--next');
   const dotsWrap = slider.querySelector('.ref-slider__dots');
+  const mobile = window.matchMedia('(max-width: 768px)');
   let current = 0;
 
   const dots = slides.map((slide, i) => {
@@ -210,6 +211,11 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
     });
     current = best;
     slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
+    // Mobil: delší sousední karty zkrátit na výšku aktivní (dole se rozplynou)
+    const activeH = slides[current].offsetHeight;
+    slides.forEach((s, i) => {
+      s.style.maxHeight = (mobile.matches && i !== current) ? activeH + 'px' : '';
+    });
     dots.forEach((d, i) => d.setAttribute('aria-current', i === current ? 'true' : 'false'));
     prev.disabled = current === 0;
     next.disabled = current === slides.length - 1;
