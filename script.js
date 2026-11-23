@@ -197,11 +197,14 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 
   function goTo(i) {
     const slide = slides[Math.max(0, Math.min(i, slides.length - 1))];
-    track.scrollTo({ left: slide.offsetLeft - track.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2 });
+    track.scrollTo({
+      left: slide.offsetLeft - track.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
+      behavior: 'smooth'
+    });
   }
 
-  // Výška posuvníku = výška aktuální reference (žádné prázdné místo pod krátkou)
-  function update() {
+  // Index reference, která je nejblíž středu
+  function findCurrent() {
     const center = track.scrollLeft + track.clientWidth / 2;
     let best = 0;
     slides.forEach((slide, i) => {
@@ -209,16 +212,27 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
       const bestMid = slides[best].offsetLeft - track.offsetLeft + slides[best].offsetWidth / 2;
       if (Math.abs(mid - center) < Math.abs(bestMid - center)) best = i;
     });
-    current = best;
+    return best;
+  }
+
+  // Během posouvání jen tečky a šipky – nic, co mění rozměry,
+  // jinak by prohlížeč (hlavně Safari) nedocvakl kartu na střed
+  function updateNav() {
+    current = findCurrent();
+    dots.forEach((d, i) => d.setAttribute('aria-current', i === current ? 'true' : 'false'));
+    prev.disabled = current === 0;
+    next.disabled = current === slides.length - 1;
+  }
+
+  // Po dojetí: zaostřit aktivní kartu, výška posuvníku = výška aktivní reference
+  function update() {
+    updateNav();
     slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
     // Mobil: delší sousední karty zkrátit na výšku aktivní (dole se rozplynou)
     const activeH = slides[current].offsetHeight;
     slides.forEach((s, i) => {
       s.style.maxHeight = (mobile.matches && i !== current) ? activeH + 'px' : '';
     });
-    dots.forEach((d, i) => d.setAttribute('aria-current', i === current ? 'true' : 'false'));
-    prev.disabled = current === 0;
-    next.disabled = current === slides.length - 1;
     const cs = getComputedStyle(track);
     track.style.height = slides[current].offsetHeight
       + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + 'px';
@@ -231,7 +245,16 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
     if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
   });
 
-  track.addEventListener('scroll', update, { passive: true });
+  let scrollTimer;
+  track.addEventListener('scroll', () => {
+    updateNav();
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(update, 150);
+  }, { passive: true });
+  track.addEventListener('scrollend', () => {
+    clearTimeout(scrollTimer);
+    update();
+  });
   window.addEventListener('resize', update);
   window.addEventListener('load', update);
   update();

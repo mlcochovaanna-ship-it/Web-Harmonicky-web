@@ -1636,7 +1636,6 @@ h4 {
   overflow-y: hidden;
   padding-block: var(--s2) var(--s4); /* místo pro stín karet */
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   transition: height 0.35s ease;
@@ -1649,6 +1648,7 @@ h4 {
 .ref-slider .ref-slide {
   flex: 0 0 100%;
   scroll-snap-align: center;
+  scroll-snap-stop: always;
   display: grid;
   grid-template-columns: 200px 1fr;
   gap: var(--s5);
@@ -1747,16 +1747,16 @@ h4 {
   }
 
   .ref-slider__track {
-    gap: 0.75rem;
-    padding-inline: 13vw;
-    scroll-padding-inline: 13vw;
+    gap: 0.5rem;
+    padding-inline: 7vw;
+    scroll-padding-inline: 7vw;
   }
 
   .ref-slider .ref-slide {
-    flex-basis: 74vw;
+    flex-basis: 86vw;
     grid-template-columns: 1fr;
     gap: var(--s3);
-    padding: 1.75rem 1.5rem;
+    padding: 1.75rem 1.25rem;
   }
 
   .ref-slider .ref-card__photo {
