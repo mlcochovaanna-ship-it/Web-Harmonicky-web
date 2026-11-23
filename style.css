@@ -3266,6 +3266,11 @@ h4 {
   animation: signature-write 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
+/* Fotka pod textem – zobrazuje se jen na mobilu (na počítači je fotka pozadím sekce) */
+.lp-about__photo {
+  display: none;
+}
+
 @keyframes signature-write {
   from { opacity: 1; clip-path: inset(0 100% 0 0); }
   to   { opacity: 1; clip-path: inset(0 0% 0 0); }
@@ -3484,6 +3489,12 @@ h4 {
 
   .lp-steps__grid {
     grid-template-columns: 1fr;
+    row-gap: var(--s6);
+  }
+
+  /* Vodorovná spojnice kroků dává smysl jen vedle sebe, ne pod sebou */
+  .lp-steps__grid::before {
+    display: none;
   }
 
   .lp-benefits__grid {
@@ -3755,6 +3766,47 @@ h4 {
 
   .lp-about__badge {
     flex-wrap: wrap;
+  }
+
+  /* Mobil: fotka na pozadí nefunguje → jednobarevné pozadí a fotka pod textem */
+  .lp-about {
+    display: block;
+    min-height: 0;
+    background-image: none;
+    background-color: var(--c-primary);
+  }
+
+  .lp-about__overlay {
+    gap: var(--s4);
+  }
+
+  .lp-about__photo {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--r-lg);
+    box-shadow: 0 8px 48px rgba(1, 92, 99, 0.10);
+  }
+
+  .lp-about__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% center;
+    display: block;
+  }
+
+  /* Jen podpis, bez razítka s logem */
+  .lp-about__logo {
+    display: none;
+  }
+
+  .lp-about__badge {
+    justify-content: flex-end;
+  }
+
+  .lp-about__signature {
+    transform: rotate(-7deg);
   }
 
   /* Mobil – 1 sloupec, bez přesahů mimo obrazovku */
@@ -4085,6 +4137,20 @@ h4 {
 :where(.lp-page) .lp-faq .accordion-title { color: var(--c-accent-deep); }
 :where(.lp-page) .lp-faq .accordion-icon { color: var(--c-accent); }
 :where(.lp-page) .container { width: 75%; }
-@media (max-width: 768px) { :where(.lp-page) .container { width: 90%; } }
+@media (max-width: 768px) {
+  :where(.lp-page) .container { width: 90%; }
+  /* Na mobilu se tlačítko vedle loga nevejde – stejné tlačítko je hned pod úvodním textem */
+  :where(.lp-page) .nav-container > .nav-link--cta { display: none; }
+}
 :where(.lp-page) .reference { background-image: url('Obrazky/harmonicky-web-3.webp'); background-size: cover; background-position: center; background-attachment: fixed; padding-block-end: var(--s10); }
-:where(.lp-page) .reference .refs-grid { margin-top: 0; }
+:where(.lp-page) .reference .ref-slider { margin-top: 0; }
+
+/* Mobil – jednotný rytmus mezer mezi sekcemi:
+   změna barvy pozadí = 64 + 64 px, dvě sekce stejné barvy za sebou = 64 + 32 px */
+@media (max-width: 768px) {
+  :where(.lp-page) .lp-empathy { padding-top: var(--s4); }
+  :where(.lp-page) .lp-pricing { padding-top: var(--s4); }
+  :where(.lp-page) .lp-about__overlay { padding-block: var(--s4) var(--s8); }
+  :where(.lp-page) .lp-portfolio,
+  :where(.lp-page) .reference { padding-block-end: var(--s8); }
+}

@@ -41,7 +41,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=20261129">
+  <link rel="stylesheet" href="style.css?v=20261133">
 
   <!-- Breadcrumb + Service Schema Markup -->
   <script type="application/ld+json">
@@ -179,13 +179,13 @@
           <!-- Levé fotky -->
           <div class="lp-hero__images lp-hero__images--left" aria-hidden="true">
             <div class="lp-hero__img lp-hero__img--1">
-              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-kadernice.png" width="1024" height="1024" alt="Kadeřnice" loading="eager">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-kadernice.webp" width="600" height="600" alt="Kadeřnice" loading="eager">
             </div>
             <div class="lp-hero__img lp-hero__img--2">
-              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-maser.png" width="1254" height="1254" alt="Masér" loading="lazy">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-maser.webp" width="600" height="600" alt="Masér" loading="eager">
             </div>
             <div class="lp-hero__img lp-hero__img--3">
-              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-trener.png" width="1254" height="1254" alt="Fitness trenér" loading="lazy">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-trener.webp" width="600" height="600" alt="Fitness trenér" loading="eager">
             </div>
           </div>
 
@@ -212,13 +212,13 @@
           <!-- Pravé fotky -->
           <div class="lp-hero__images lp-hero__images--right" aria-hidden="true">
             <div class="lp-hero__img lp-hero__img--4">
-              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-kosmetika.png" width="1024" height="1024" alt="Kosmetika" loading="lazy">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-kosmetika.webp" width="600" height="600" alt="Kosmetika" loading="eager">
             </div>
             <div class="lp-hero__img lp-hero__img--5">
-              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-fyzio.png" width="1024" height="1024" alt="Fyzioterapie" loading="lazy">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-fyzio.webp" width="600" height="600" alt="Fyzioterapie" loading="eager">
             </div>
             <div class="lp-hero__img lp-hero__img--6">
-              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-barber.png" width="1024" height="1024" alt="Barber" loading="lazy">
+              <img src="Obrazky/Kategorie/Kat1-Pece-o-telo/kat1-barber.webp" width="600" height="600" alt="Barber" loading="eager">
             </div>
           </div>
 
@@ -343,6 +343,11 @@
             <span class="lp-about__signature" aria-hidden="true">Anna Mlčochová</span>
           </div>
         </div>
+        <!-- Jen na mobilu: fotka pod textem místo pozadí sekce -->
+        <div class="lp-about__photo">
+          <img src="Obrazky/harmonicky-web-5.webp" width="2000" height="1333"
+            alt="Anna Mlčochová s notebookem v trávě při západu slunce" loading="lazy">
+        </div>
       </div>
     </section>
 
@@ -459,9 +464,26 @@
     ============================================================ -->
     <section class="section reference">
       <div class="container">
-        <div class="refs-grid">
+        <!-- Reference – posuvník: nová reference = další <blockquote class="ref-card ref-slide">
+             (nejnovější nahoru), upravit i aria-label „X z N“ u všech -->
+        <div class="ref-slider" role="region" aria-roledescription="posuvník" aria-label="Reference klientů">
+          <button class="ref-slider__arrow ref-slider__arrow--prev" type="button" aria-label="Předchozí reference">
+            <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
+          </button>
+          <div class="ref-slider__viewport">
+          <div class="ref-slider__track" tabindex="0">
 
-          <blockquote class="ref-card ref-card--collapsible">
+          <blockquote class="ref-card ref-slide" role="group" aria-roledescription="reference" aria-label="1 z 3">
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-alena-hanusova.jpg" width="1000" height="1000" alt="Alena Hanušová" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Alena Hanušová</strong>
+                <cite class="ref-card__role">Byznys astroložka a&nbsp;mentorka, <a href="https://alenahanusova.cz"
+                    target="_blank" rel="noopener noreferrer" class="portfolio-link">alenahanusova.cz <i
+                      class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
+              </div>
+            </footer>
             <div class="ref-card__body">
               <p>Na Aničku jsem se obrátila, když jsem potřebovala přesunout svůj web na jinou platformu. Navíc
                 jsem se potřebovala <strong>trefit do časového okna mezi dvěma kampaněmi</strong>, takže celý
@@ -473,32 +495,9 @@
                   srozumitelně vysvětlit technické věci</strong> i&nbsp;takové techno-lamě jako jsem já.</p>
               <p>Vše klaplo podle plánu a&nbsp;nijak mi to nezdrželo plán kampaní. Rozhodně spolupráci doporučuji.</p>
             </div>
-            <button class="ref-card__more" aria-expanded="false">
-              <span>Číst více</span>
-              <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
-            </button>
-            <footer class="ref-card__author">
-              <img src="Obrazky/Reference/reference-alena-hanusova.jpg" width="1000" height="1000" alt="Alena Hanušová" loading="lazy"
-                class="ref-card__photo">
-              <div>
-                <strong class="ref-card__name">Alena Hanušová</strong>
-                <cite class="ref-card__role">Byznys astroložka a&nbsp;mentorka, <a href="https://alenahanusova.cz"
-                    target="_blank" rel="noopener noreferrer" class="portfolio-link">alenahanusova.cz <i
-                      class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
-              </div>
-            </footer>
           </blockquote>
 
-          <blockquote class="ref-card">
-            <div class="ref-card__body">
-              <p>Potřeboval jsem vytvořit web, který bude kvůli mé činnosti <strong>opravdu osobitý
-                  a&nbsp;autentický</strong>.</p>
-              <p>Měl jsem velké štěstí, že jsem se dostal k&nbsp;Aničce. Jako webařka dokáže <strong>propojit
-                  intuici, výtvarné cítění i&nbsp;zdravý rozum</strong>, a&nbsp;právě tahle kombinace je podle mě
-                pro tvorbu webu ideální.</p>
-              <p>Z&nbsp;mých textů <strong>vybrala to nejdůležitější</strong>, dala jim smysluplné flow
-                a&nbsp;celé to nádherně barevně vyladila. Opravdu profesionální práce!</p>
-            </div>
+          <blockquote class="ref-card ref-slide" role="group" aria-roledescription="reference" aria-label="2 z 3">
             <footer class="ref-card__author">
               <img src="Obrazky/Reference/reference-rudolf-guzik.jpg" width="500" height="500" alt="Rudolf Guzik" loading="lazy"
                 class="ref-card__photo">
@@ -509,9 +508,26 @@
                       class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
               </div>
             </footer>
+            <div class="ref-card__body">
+              <p>Potřeboval jsem vytvořit web, který bude kvůli mé činnosti <strong>opravdu osobitý
+                  a&nbsp;autentický</strong>.</p>
+              <p>Měl jsem velké štěstí, že jsem se dostal k&nbsp;Aničce. Jako webařka dokáže <strong>propojit
+                  intuici, výtvarné cítění i&nbsp;zdravý rozum</strong>, a&nbsp;právě tahle kombinace je podle mě
+                pro tvorbu webu ideální.</p>
+              <p>Z&nbsp;mých textů <strong>vybrala to nejdůležitější</strong>, dala jim smysluplné flow
+                a&nbsp;celé to nádherně barevně vyladila. Opravdu profesionální práce!</p>
+            </div>
           </blockquote>
 
-          <blockquote class="ref-card ref-card--collapsible">
+          <blockquote class="ref-card ref-slide" role="group" aria-roledescription="reference" aria-label="3 z 3">
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-zaneta-ariati.jpg" width="1000" height="1000" alt="Žaneta Ariati" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Žaneta Ariati</strong>
+                <cite class="ref-card__role">Soul mentorka a&nbsp;byznys čarodějka</cite>
+              </div>
+            </footer>
             <div class="ref-card__body">
               <p>S&nbsp;Aničkou dlouhodobě spolupracuji na mých online projektech a&nbsp;prodejních stránkách.</p>
               <p>Anička má naprosto unikátní schopnost <strong>vystihnout tu správnou esenci</strong>. Tu vibraci,
@@ -523,20 +539,14 @@
               <p>Jsem s&nbsp;Aniččinou péčí nadmíru spokojená a&nbsp;její webovou tvorbu s&nbsp;radostí
                 doporučuji.</p>
             </div>
-            <button class="ref-card__more" aria-expanded="false">
-              <span>Číst více</span>
-              <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
-            </button>
-            <footer class="ref-card__author">
-              <img src="Obrazky/Reference/reference-zaneta-ariati.jpg" width="1000" height="1000" alt="Žaneta Ariati" loading="lazy"
-                class="ref-card__photo">
-              <div>
-                <strong class="ref-card__name">Žaneta Ariati</strong>
-                <cite class="ref-card__role">Soul mentorka a&nbsp;byznys čarodějka</cite>
-              </div>
-            </footer>
           </blockquote>
 
+          </div>
+          </div>
+          <button class="ref-slider__arrow ref-slider__arrow--next" type="button" aria-label="Další reference">
+            <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+          </button>
+          <div class="ref-slider__dots" aria-label="Výběr reference"></div>
         </div>
 
         <div class="reference__cta">
@@ -785,7 +795,7 @@
   </footer>
 
 
-  <script src="script.js?v=20261129"></script>
+  <script src="script.js?v=20261131"></script>
 </body>
 
 </html>

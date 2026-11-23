@@ -244,14 +244,24 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
   const layers = section ? Array.from(section.querySelectorAll('.reference__bg, .reference__overlay')) : [];
   let lastWidth = 0;
   function fixBackground() {
-    if (!layers.length || window.innerWidth === lastWidth) return;
+    if (!section || window.innerWidth === lastWidth) return;
     lastWidth = window.innerWidth;
     layers.forEach(l => { l.style.bottom = ''; l.style.height = ''; });
+    section.style.backgroundSize = '';
+    section.style.backgroundPosition = '';
+    section.style.backgroundAttachment = '';
     track.style.height = '';
     slides.forEach(s => { s.style.maxHeight = ''; });
     // bez nastavené výšky má posuvník výšku nejdelší reference
     const h = section.offsetHeight + 'px';
-    layers.forEach(l => { l.style.bottom = 'auto'; l.style.height = h; });
+    if (layers.length) {
+      layers.forEach(l => { l.style.bottom = 'auto'; l.style.height = h; });
+    } else if (mobile.matches && getComputedStyle(section).backgroundImage !== 'none') {
+      // Pozadí jako CSS obrázek (stránka pro masérky): na mobilu pevná výška místo cover
+      section.style.backgroundSize = 'auto ' + h;
+      section.style.backgroundPosition = 'center top';
+      section.style.backgroundAttachment = 'scroll';
+    }
   }
 
   prev.addEventListener('click', () => goTo(current - 1));
