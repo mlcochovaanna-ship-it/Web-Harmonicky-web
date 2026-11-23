@@ -1782,10 +1782,12 @@ h4 {
     mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
   }
 
-  /* Během posouvání prstem jsou ostré všechny, rozostří se až po zastavení */
+  /* Během posouvání prstem jsou všechny ostré a v plné velikosti,
+     boční se rozostří a zmenší až po zastavení */
   .ref-slider.is-scrolling .ref-slide:not(.is-active) {
     filter: none;
     opacity: 1;
+    transform: none;
   }
 
   .ref-slider__arrow {
