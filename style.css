@@ -1622,6 +1622,10 @@ h4 {
 }
 
 /* Posuvník referencí (hlavní stránka) – jedna široká karta, celý text */
+.ref-slider__viewport {
+  position: relative;
+}
+
 .ref-slider {
   position: relative;
   max-width: 980px;
@@ -1768,26 +1772,37 @@ h4 {
     white-space: nowrap;
   }
 
-  /* Sousední reference rozostřené, aktivní ostrá */
-  .ref-slider .ref-slide {
-    transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  /* Kraje posuvníku trvale rozostřené – karty se při posunu nemění */
+  .ref-slider__viewport::before,
+  .ref-slider__viewport::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 9vw;
+    z-index: 1;
+    pointer-events: none;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
 
+  .ref-slider__viewport::before {
+    left: 0;
+    -webkit-mask-image: linear-gradient(to right, #000 60%, transparent);
+    mask-image: linear-gradient(to right, #000 60%, transparent);
+  }
+
+  .ref-slider__viewport::after {
+    right: 0;
+    -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
+    mask-image: linear-gradient(to left, #000 60%, transparent);
+  }
+
+  /* Delší sousední karty zkrácené na výšku aktivní, dole se rozplynou */
   .ref-slider .ref-slide:not(.is-active) {
-    filter: blur(2.5px);
-    opacity: 0.85;
-    transform: scale(0.96);
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-  }
-
-  /* Během posouvání prstem jsou všechny ostré a v plné velikosti,
-     boční se rozostří a zmenší až po zastavení */
-  .ref-slider.is-scrolling .ref-slide:not(.is-active) {
-    filter: none;
-    opacity: 1;
-    transform: none;
   }
 
   .ref-slider__arrow {

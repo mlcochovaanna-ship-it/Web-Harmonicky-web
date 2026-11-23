@@ -226,7 +226,6 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 
   // Po dojetí: zaostřit aktivní kartu, výška posuvníku = výška aktivní reference
   function update() {
-    slider.classList.remove('is-scrolling');
     updateNav();
     slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
     // Mobil: delší sousední karty zkrátit na výšku aktivní (dole se rozplynou)
@@ -239,6 +238,22 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
       + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + 'px';
   }
 
+  // Fotka a přechod na pozadí sekce mají pevnou výšku (podle nejdelší reference),
+  // aby se při změně výšky posuvníku nepřibližovala a neoddalovala
+  const section = slider.closest('.reference');
+  const layers = section ? Array.from(section.querySelectorAll('.reference__bg, .reference__overlay')) : [];
+  let lastWidth = 0;
+  function fixBackground() {
+    if (!layers.length || window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    layers.forEach(l => { l.style.bottom = ''; l.style.height = ''; });
+    track.style.height = '';
+    slides.forEach(s => { s.style.maxHeight = ''; });
+    // bez nastavené výšky má posuvník výšku nejdelší reference
+    const h = section.offsetHeight + 'px';
+    layers.forEach(l => { l.style.bottom = 'auto'; l.style.height = h; });
+  }
+
   prev.addEventListener('click', () => goTo(current - 1));
   next.addEventListener('click', () => goTo(current + 1));
   track.addEventListener('keydown', e => {
@@ -248,7 +263,6 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 
   let scrollTimer;
   track.addEventListener('scroll', () => {
-    slider.classList.add('is-scrolling'); // během posunu jsou ostré všechny karty
     updateNav();
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(update, 80);
@@ -257,9 +271,14 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
     clearTimeout(scrollTimer);
     update();
   });
-  window.addEventListener('resize', update);
-  window.addEventListener('load', update);
-  update();
+  function refresh() {
+    fixBackground();
+    update();
+  }
+
+  window.addEventListener('resize', refresh);
+  window.addEventListener('load', () => { lastWidth = 0; refresh(); });
+  refresh();
 })();
 
 /* ============================================================
