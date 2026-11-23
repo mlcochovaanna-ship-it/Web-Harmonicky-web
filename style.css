@@ -1770,7 +1770,7 @@ h4 {
 
   /* Sousední reference rozostřené, aktivní ostrá */
   .ref-slider .ref-slide {
-    transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+    transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
   }
 
   .ref-slider .ref-slide:not(.is-active) {
@@ -1780,6 +1780,12 @@ h4 {
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  }
+
+  /* Během posouvání prstem jsou ostré všechny, rozostří se až po zastavení */
+  .ref-slider.is-scrolling .ref-slide:not(.is-active) {
+    filter: none;
+    opacity: 1;
   }
 
   .ref-slider__arrow {

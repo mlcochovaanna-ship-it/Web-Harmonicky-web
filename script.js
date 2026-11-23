@@ -226,6 +226,7 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 
   // Po dojetí: zaostřit aktivní kartu, výška posuvníku = výška aktivní reference
   function update() {
+    slider.classList.remove('is-scrolling');
     updateNav();
     slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
     // Mobil: delší sousední karty zkrátit na výšku aktivní (dole se rozplynou)
@@ -247,9 +248,10 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 
   let scrollTimer;
   track.addEventListener('scroll', () => {
+    slider.classList.add('is-scrolling'); // během posunu jsou ostré všechny karty
     updateNav();
     clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(update, 150);
+    scrollTimer = setTimeout(update, 80);
   }, { passive: true });
   track.addEventListener('scrollend', () => {
     clearTimeout(scrollTimer);
