@@ -42,7 +42,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=20261102">
+  <link rel="stylesheet" href="style.css?v=20261123">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -854,9 +854,54 @@
         <p class="section-label">Proč si klienti vybírají mě</p>
         <h2 class="section-title" id="reference-h">Co <strong>ŘÍKAJÍ</strong> ti, kteří už svůj web mají?</h2>
 
-        <div class="refs-grid">
+        <!-- Reference – posuvník: nová reference = další <blockquote class="ref-card ref-slide">
+             (nejnovější nahoru), upravit i aria-label „X z N“ u všech -->
+        <div class="ref-slider" role="region" aria-roledescription="posuvník" aria-label="Reference klientů">
+          <button class="ref-slider__arrow ref-slider__arrow--prev" type="button" aria-label="Předchozí reference">
+            <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
+          </button>
+          <div class="ref-slider__track" tabindex="0">
 
-          <blockquote class="ref-card ref-card--collapsible">
+          <blockquote class="ref-card ref-slide" role="group" aria-roledescription="reference" aria-label="1 z 4">
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-milan-dragoun.jpg" width="500" height="500" alt="Milan Dragoun" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Milan Dragoun</strong>
+                <cite class="ref-card__role">Podlahářství Dragoun, <a href="https://podlaharstvi-dragoun.cz"
+                    target="_blank" rel="noopener noreferrer" class="portfolio-link">podlaharstvi-dragoun.cz <i
+                      class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
+              </div>
+            </footer>
+            <div class="ref-card__body">
+              <p>Spolupráci s&nbsp;Harmonickým webem mohu <strong>jednoznačně doporučit</strong>!</p>
+              <p>O&nbsp;mé nové webové stránky pro Podlahářství Dragoun se postarala Anička a&nbsp;s&nbsp;její prací
+                jsem maximálně spokojený.</p>
+              <p>Od&nbsp;prvního kontaktu až po finální spuštění webu probíhalo vše naprosto hladce. Velmi oceňuji
+                <strong>skvělou komunikaci, vstřícný a&nbsp;profesionální přístup</strong>, rychlost realizace
+                a&nbsp;především <strong>dodržení všech domluvených termínů</strong>.</p>
+              <p>Anička dokázala skvěle vystihnout mé představy a&nbsp;proměnit je v&nbsp;<strong>moderní, přehledný
+                  a&nbsp;krásně zpracovaný web</strong>, který výborně vypadá a&nbsp;funguje přesně tak, jak má.</p>
+              <p>Příjemným překvapením byla navíc i&nbsp;<strong>velmi příznivá cena</strong> vzhledem ke kvalitě
+                odvedené práce.</p>
+              <p>Je radost spolupracovat s&nbsp;někým, kdo <strong>své práci opravdu rozumí, drží slovo
+                  a&nbsp;záleží mu na výsledku</strong>.</p>
+              <p>Aničce moc děkuji a&nbsp;Harmonický web s&nbsp;čistým svědomím doporučuji všem, kdo hledají kvalitní
+                webové stránky a&nbsp;férový přístup.</p>
+            </div>
+          </blockquote>
+
+          <blockquote class="ref-card ref-slide" role="group" aria-roledescription="reference" aria-label="2 z 4">
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-alena-hanusova.jpg" width="1000" height="1000" alt="Alena Hanušová" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Alena Hanušová</strong>
+                <cite class="ref-card__role">Byznys astroložka a&nbsp;mentorka, <a href="https://alenahanusova.cz"
+                    target="_blank" rel="noopener noreferrer" class="portfolio-link">alenahanusova.cz <i
+                      class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
+              </div>
+            </footer>
             <div class="ref-card__body">
               <p>Na Aničku jsem se obrátila, když jsem potřebovala přesunout svůj web na jinou platformu. Navíc
                 jsem se potřebovala <strong>trefit do časového okna mezi dvěma kampaněmi</strong>, takže celý
@@ -868,32 +913,9 @@
                   srozumitelně vysvětlit technické věci</strong> i&nbsp;takové techno-lamě jako jsem já.</p>
               <p>Vše klaplo podle plánu a&nbsp;nijak mi to nezdrželo plán kampaní. Rozhodně spolupráci doporučuji.</p>
             </div>
-            <button class="ref-card__more" aria-expanded="false">
-              <span>Číst více</span>
-              <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
-            </button>
-            <footer class="ref-card__author">
-              <img src="Obrazky/Reference/reference-alena-hanusova.jpg" width="1000" height="1000" alt="Alena Hanušová" loading="lazy"
-                class="ref-card__photo">
-              <div>
-                <strong class="ref-card__name">Alena Hanušová</strong>
-                <cite class="ref-card__role">Byznys astroložka a&nbsp;mentorka, <a href="https://alenahanusova.cz"
-                    target="_blank" rel="noopener noreferrer" class="portfolio-link">alenahanusova.cz <i
-                      class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
-              </div>
-            </footer>
           </blockquote>
 
-          <blockquote class="ref-card">
-            <div class="ref-card__body">
-              <p>Potřeboval jsem vytvořit web, který bude kvůli mé činnosti <strong>opravdu osobitý
-                  a&nbsp;autentický</strong>.</p>
-              <p>Měl jsem velké štěstí, že jsem se dostal k&nbsp;Aničce. Jako webařka dokáže <strong>propojit
-                  intuici, výtvarné cítění i&nbsp;zdravý rozum</strong>, a&nbsp;právě tahle kombinace je podle mě
-                pro tvorbu webu ideální.</p>
-              <p>Z&nbsp;mých textů <strong>vybrala to nejdůležitější</strong>, dala jim smysluplné flow
-                a&nbsp;celé to nádherně barevně vyladila. Opravdu profesionální práce!</p>
-            </div>
+          <blockquote class="ref-card ref-slide" role="group" aria-roledescription="reference" aria-label="3 z 4">
             <footer class="ref-card__author">
               <img src="Obrazky/Reference/reference-rudolf-guzik.jpg" width="500" height="500" alt="Rudolf Guzik" loading="lazy"
                 class="ref-card__photo">
@@ -904,9 +926,26 @@
                       class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></cite>
               </div>
             </footer>
+            <div class="ref-card__body">
+              <p>Potřeboval jsem vytvořit web, který bude kvůli mé činnosti <strong>opravdu osobitý
+                  a&nbsp;autentický</strong>.</p>
+              <p>Měl jsem velké štěstí, že jsem se dostal k&nbsp;Aničce. Jako webařka dokáže <strong>propojit
+                  intuici, výtvarné cítění i&nbsp;zdravý rozum</strong>, a&nbsp;právě tahle kombinace je podle mě
+                pro tvorbu webu ideální.</p>
+              <p>Z&nbsp;mých textů <strong>vybrala to nejdůležitější</strong>, dala jim smysluplné flow
+                a&nbsp;celé to nádherně barevně vyladila. Opravdu profesionální práce!</p>
+            </div>
           </blockquote>
 
-          <blockquote class="ref-card ref-card--collapsible">
+          <blockquote class="ref-card ref-slide" role="group" aria-roledescription="reference" aria-label="4 z 4">
+            <footer class="ref-card__author">
+              <img src="Obrazky/Reference/reference-zaneta-ariati.jpg" width="1000" height="1000" alt="Žaneta Ariati" loading="lazy"
+                class="ref-card__photo">
+              <div>
+                <strong class="ref-card__name">Žaneta Ariati</strong>
+                <cite class="ref-card__role">Soul mentorka a&nbsp;byznys čarodějka</cite>
+              </div>
+            </footer>
             <div class="ref-card__body">
               <p>S&nbsp;Aničkou dlouhodobě spolupracuji na mých online projektech a&nbsp;prodejních stránkách.</p>
               <p>Anička má naprosto unikátní schopnost <strong>vystihnout tu správnou esenci</strong>. Tu vibraci,
@@ -918,20 +957,13 @@
               <p>Jsem s&nbsp;Aniččinou péčí nadmíru spokojená a&nbsp;její webovou tvorbu s&nbsp;radostí
                 doporučuji.</p>
             </div>
-            <button class="ref-card__more" aria-expanded="false">
-              <span>Číst více</span>
-              <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
-            </button>
-            <footer class="ref-card__author">
-              <img src="Obrazky/Reference/reference-zaneta-ariati.jpg" width="1000" height="1000" alt="Žaneta Ariati" loading="lazy"
-                class="ref-card__photo">
-              <div>
-                <strong class="ref-card__name">Žaneta Ariati</strong>
-                <cite class="ref-card__role">Soul mentorka a&nbsp;byznys čarodějka</cite>
-              </div>
-            </footer>
           </blockquote>
 
+          </div>
+          <button class="ref-slider__arrow ref-slider__arrow--next" type="button" aria-label="Další reference">
+            <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+          </button>
+          <div class="ref-slider__dots" aria-label="Výběr reference"></div>
         </div>
 
         <div class="reference__cta">
@@ -1146,7 +1178,7 @@
   </footer>
 
 
-  <script src="script.js?v=20261022"></script>
+  <script src="script.js?v=20261123"></script>
 </body>
 
 </html>

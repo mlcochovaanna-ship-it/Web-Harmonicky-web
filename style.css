@@ -1621,6 +1621,169 @@ h4 {
   margin-top: var(--s8);
 }
 
+/* Posuvník referencí (hlavní stránka) – jedna široká karta, celý text */
+.ref-slider {
+  position: relative;
+  max-width: 980px;
+  margin: calc(var(--s8) - var(--s2)) auto 0;
+}
+
+.ref-slider__track {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s4);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: var(--s2) var(--s4); /* místo pro stín karet */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  transition: height 0.35s ease;
+}
+
+.ref-slider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.ref-slider .ref-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--s5);
+  align-items: start;
+}
+
+.ref-slider .ref-card__author {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.ref-slider .ref-card__photo {
+  width: 120px;
+  height: 120px;
+}
+
+.ref-slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(1, 92, 99, 0.25);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--c-accent);
+  cursor: pointer;
+  transition: background var(--tr), opacity var(--tr);
+}
+
+.ref-slider__arrow:hover {
+  background: #fff;
+}
+
+.ref-slider__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.ref-slider__arrow--prev {
+  left: -4.5rem;
+}
+
+.ref-slider__arrow--next {
+  right: -4.5rem;
+}
+
+.ref-slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  width: fit-content;
+  margin: var(--s2) auto 0;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ref-slider__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--c-accent);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--tr), transform var(--tr);
+}
+
+.ref-slider__dot[aria-current="true"] {
+  background: var(--c-accent);
+  transform: scale(1.15);
+}
+
+@media (max-width: 1180px) {
+  .ref-slider__arrow--prev {
+    left: -1.5rem;
+  }
+
+  .ref-slider__arrow--next {
+    right: -1.5rem;
+  }
+}
+
+/* Mobil: karta 85 % šířky, další vykukuje, posun prstem */
+@media (max-width: 768px) {
+  /* Posuvník přes celou šířku displeje, ať jsou sousední karty vidět */
+  .ref-slider {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .ref-slider__track {
+    gap: 0.75rem;
+    padding-inline: 13vw;
+    scroll-padding-inline: 13vw;
+  }
+
+  .ref-slider .ref-slide {
+    flex-basis: 74vw;
+    grid-template-columns: 1fr;
+    gap: var(--s3);
+    padding: 1.75rem 1.5rem;
+  }
+
+  .ref-slider .ref-card__photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .ref-slider .ref-card__role a {
+    white-space: nowrap;
+  }
+
+  /* Sousední reference rozostřené, aktivní ostrá */
+  .ref-slider .ref-slide {
+    transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .ref-slider .ref-slide:not(.is-active) {
+    filter: blur(2.5px);
+    opacity: 0.85;
+    transform: scale(0.96);
+  }
+
+  .ref-slider__arrow {
+    display: none;
+  }
+}
+
 /* Karta reference */
 .ref-card {
   display: flex;
@@ -2345,6 +2508,19 @@ h4 {
    ============================================================ */
 .portfolio-page {
   padding-top: calc(var(--nav-h) + var(--s12));
+}
+
+.portfolio-page .section-title {
+  margin-bottom: var(--s3);
+}
+
+.portfolio-page__intro {
+  max-width: 760px;
+  font-size: var(--t-base);
+  line-height: 1.7;
+  color: var(--c-text);
+  text-align: center;
+  margin: 0 auto 4rem;
 }
 
 /* ============================================================

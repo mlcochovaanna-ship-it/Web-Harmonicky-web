@@ -171,6 +171,67 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 })();
 
 /* ============================================================
+   REFERENCE – POSUVNÍK (hlavní stránka)
+   ============================================================ */
+(function initRefSlider() {
+  const slider = document.querySelector('.ref-slider');
+  if (!slider) return;
+
+  const track = slider.querySelector('.ref-slider__track');
+  const slides = Array.from(track.querySelectorAll('.ref-slide'));
+  const prev = slider.querySelector('.ref-slider__arrow--prev');
+  const next = slider.querySelector('.ref-slider__arrow--next');
+  const dotsWrap = slider.querySelector('.ref-slider__dots');
+  let current = 0;
+
+  const dots = slides.map((slide, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'ref-slider__dot';
+    dot.setAttribute('aria-label', 'Reference ' + (i + 1) + ' z ' + slides.length);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function goTo(i) {
+    const slide = slides[Math.max(0, Math.min(i, slides.length - 1))];
+    track.scrollTo({ left: slide.offsetLeft - track.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2 });
+  }
+
+  // Výška posuvníku = výška aktuální reference (žádné prázdné místo pod krátkou)
+  function update() {
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let best = 0;
+    slides.forEach((slide, i) => {
+      const mid = slide.offsetLeft - track.offsetLeft + slide.offsetWidth / 2;
+      const bestMid = slides[best].offsetLeft - track.offsetLeft + slides[best].offsetWidth / 2;
+      if (Math.abs(mid - center) < Math.abs(bestMid - center)) best = i;
+    });
+    current = best;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
+    dots.forEach((d, i) => d.setAttribute('aria-current', i === current ? 'true' : 'false'));
+    prev.disabled = current === 0;
+    next.disabled = current === slides.length - 1;
+    const cs = getComputedStyle(track);
+    track.style.height = slides[current].offsetHeight
+      + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + 'px';
+  }
+
+  prev.addEventListener('click', () => goTo(current - 1));
+  next.addEventListener('click', () => goTo(current + 1));
+  track.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+  });
+
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  update();
+})();
+
+/* ============================================================
    SCROLL REVEAL
    ============================================================ */
 (function initReveal() {
